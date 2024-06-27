@@ -1,0 +1,18 @@
+---
+import Title from './TitleSection.astro'
+const { description, totalYears, nationality, iLiveIn } = Astro.props
+---
+
+<section id="sobre-mi" class="px-6 py-6 flex flex-col items-center w-full max-w-screen-lg mx-auto">
+    <Title>Sobre mí</Title>
+    <div class="bg-white shadow-md rounded-2xl p-8 text-center w-full  transition-transform hover:scale-95 hover:shadow-lg duration-1000">
+      <div class="border-b border-gray-300 mb-4 pb-4">
+        <p class="mb-2"> Soy de <span class="text-primary"> {nationality} 🇨🇴</span> </p>
+        <p class="mb-2"> Vivo en <span class="text-primary"> {iLiveIn} 🇪🇸 </span></p>
+        <p> Más de <span class="text-primary"> {totalYears} años </span> de experiencia en la industria <span class="text-primary">tecnológica</span> </p>
+      </div>
+      <div>
+        <p>{description}</p>
+      </div>
+    </div>
+  </section>

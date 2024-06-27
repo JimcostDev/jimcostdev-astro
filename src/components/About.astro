@@ -1,0 +1,41 @@
+---
+import { cargarDatos } from "../api/loadData.js";
+import CardAbout from "./CardAbout.astro";
+
+// info de perfil
+const profileData = await cargarDatos("perfil");
+const getProfile = Array.isArray(profileData) ? profileData : [profileData];
+
+// info de experiencia
+const experienceData = await cargarDatos("work_experience/total_years");
+const totalYears = experienceData??0;
+
+//info de contacto
+const contactData = await cargarDatos("contact");
+const getContact = Array.isArray(contactData) ? contactData : [contactData];
+
+// Mezclar la información
+const data = getProfile.map(profile => {
+  const contactInfo = getContact.find(contact => contact.id === profile.id);
+  return {
+    ...profile,
+    totalYears,
+    nationality: contactInfo?.nationality || "N/A", // De dónde soy
+    iLiveIn: contactInfo?.i_live_in || "N/A" // Dónde vivo
+  };
+});
+
+---
+
+{
+  data.map(({ description, totalYears, nationality, iLiveIn }) => (
+    <CardAbout
+      description={description}
+      totalYears={totalYears}
+      nationality={nationality}
+      iLiveIn={iLiveIn}
+    />
+  ))
+}
+
+
