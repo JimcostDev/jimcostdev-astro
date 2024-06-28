@@ -10,6 +10,7 @@ import MailIcon from '../components/icons/Mail.astro';
 import YoutubeIcon from '../components/icons/YouTube.astro';
 import GitHubIcon from './icons/GitHub.astro';
 import LinkedInIcon from './icons/LinkedIn.astro';
+import DocumentIcon from './icons/Doc.astro';
 ---
 
 <header class="w-full bg-BACKGROUND_MOBILE md:bg-BACKGROUND_DESKTOP bg-cover relative pb-2">
@@ -45,7 +46,7 @@ import LinkedInIcon from './icons/LinkedIn.astro';
       <!-- Contenido principal que se desplazará -->
       <div id="presentacion" class="pt-16 md:pt-24 px-0 relative">
       
-        <div id="img-usuario" class="mb-4 relative mx-auto w-36 h-36 md:w-64 md:h-64">
+        <div id="img-usuario" class="mb-4 relative mx-auto size-48 md:size-64">
           <img src="/dev.webp" class="w-full h-full object-cover rounded-full" alt="Ronaldo Jiménez">
         </div>
 
@@ -53,10 +54,10 @@ import LinkedInIcon from './icons/LinkedIn.astro';
           HOLA, SOY <span class="text-secondary">RONALDO JIMÉNEZ</span>
         </h1>
         
-        <div class="flex flex-col items-center justify-between mt-1 px-8">
+        <div class="flex flex-col items-center justify-between mt-1 px-8 text-center">
           <h3 class="text-lg md:text-2xl font-semibold mb-2">SOFTWARE DEVELOPER</h3>
           <!-- Redes sociales -->
-          <div class="mb-2 text-xl lg:text-2xl">
+          <div class="mb-2">
             <SocialButton href="https://www.linkedin.com/in/ronaldo-jimenez">
               <LinkedInIcon class="size-4"/>
                LinkedIn
@@ -75,6 +76,11 @@ import LinkedInIcon from './icons/LinkedIn.astro';
             <SocialButton href="mailto:jimcostdev@gmail.com">
               <MailIcon class="size-4"/>
               Contáctame
+            </SocialButton>
+
+            <SocialButton href="https://cv.jimcostdev.com/">
+              <DocumentIcon class="size-4"/>
+              Descargar CV
             </SocialButton>
           </div>
         </div>
