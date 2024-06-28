@@ -1,0 +1,53 @@
+---
+import { cargarDatos } from "../api/loadData.js";
+import EducationItem from './EducationItem.astro';
+
+// info de estudios
+const gradesData = await cargarDatos("education");
+const getGrades = Array.isArray(gradesData) ? gradesData : [];
+
+const certificationsData = await cargarDatos("certification");
+const getCertifications = Array.isArray(certificationsData) ? certificationsData : [];
+---
+
+<div class="flex justify-center mb-5">
+  <div class="bg-white rounded-lg shadow-md p-4 flex items-center">
+    <div class="flex items-center mr-4">
+      <div class="w-3 h-3 bg-yellow-300 rounded-full mr-2"></div>
+      <span class="text-primary font-semibold">Grado</span>
+    </div>
+    <div class="flex items-center">
+      <div class="w-3 h-3 bg-green-300 rounded-full mr-2"></div>
+      <span class="text-primary font-semibold">Certificación</span>
+    </div>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-48">
+  <div>
+    <ol class="relative border-l-2 border-gray-300 ml-6">
+      {getGrades.map(({ career, company, year }) => (
+        <EducationItem 
+          type="grado" 
+          title={career} 
+          institution={company} 
+          date={year.toString()} 
+        />
+      ))}
+    </ol>
+  </div>
+
+  <div>
+    <ol class="relative border-l-2 border-gray-300 ml-6">
+      {getCertifications.map(({ certification, company, link }) => (
+        <EducationItem 
+          type="certificación" 
+          title={certification} 
+          institution={company} 
+          date=""  
+          link={link} 
+        />
+      ))}
+    </ol>
+  </div>
+</div>

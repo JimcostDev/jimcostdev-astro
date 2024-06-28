@@ -1,19 +1,14 @@
 ---
-import Title from './TitleSection.astro'
 import PythonIcon from './icons/Python.astro';
 import TailwindIcon from './icons/Tailwind.astro';
 import AstroIcon from './icons/Ast.astro';
 import FastAPIIcon from './icons/FastAPI.astro';
 import ReactIcon from './icons/React.astro';
-import GitIcon from './icons/Git.astro';
 import MongoDDIcon from './icons/MongoDB.astro';
 import MSSQLIcon from './icons/MSSQL.astro';
 import JSIcon from './icons/JS.astro';
 import Skill from './PillSkill.astro';
 ---
-
-<section id="skills" class="px-4 py-6 w-full max-w-5xl mx-auto">
-    <Title>Skills</Title>
     <div class="flex flex-wrap justify-around">
         <Skill>
             <PythonIcon class="size-5 md:size-8" slot="icon" />
@@ -40,10 +35,6 @@ import Skill from './PillSkill.astro';
             <span slot="text">React</span>  
         </Skill>
         <Skill>
-            <GitIcon class="size-5 md:size-8" slot="icon" />
-            <span slot="text">Git</span>        
-        </Skill>
-        <Skill>
             <MongoDDIcon class="size-5 md:size-8" slot="icon" />
             <span slot="text">MongoDB</span>
         </Skill>
@@ -51,8 +42,6 @@ import Skill from './PillSkill.astro';
             <MSSQLIcon class="size-5 md:size-8" slot="icon" />
             <span slot="text">SQL Server</span>
         </Skill>
-
     </div>
-</section>
 
 

@@ -1,0 +1,45 @@
+---
+const currentYear = new Date().getFullYear();
+import SocialButton from './SocialButton.astro';
+import LinkedInIcon from './icons/LinkedIn.astro';
+import GitHubIcon from './icons/GitHub.astro';
+import YoutubeIcon from './icons/YouTube.astro';
+import MailIcon from './icons/Mail.astro';
+---
+
+<footer class="bg-BACKGROUND_MOBILE md:bg-BACKGROUND_DESKTOP bg-cover text-tertiary py-6 pb-20">
+    <div class="footer-content text-center ">
+      <div class="logo mb-4">
+        <img src="/logo.svg" width="128" height="128" alt="jimcostdev logo" class="mx-auto">
+      </div>
+      <div class="quote mb-4 px-4">
+        <p class="text-base italic">"Ponte un blanco alto y haz fervientes esfuerzos por alcanzarlo y no te desanimes" EGW</p>
+      </div>
+      <div class="footer-bottom">
+        <p class="text-sm mb-4">Hecho con 🤍 - © Ronaldo Jiménez {currentYear}</p>
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="mb-2 text-xl lg:text-2xl">
+        <SocialButton href="https://www.linkedin.com/in/ronaldo-jimenez">
+          <LinkedInIcon class="size-4"/>
+           LinkedIn
+        </SocialButton>
+
+        <SocialButton href="https://github.com/JimcostDev">
+          <GitHubIcon class="size-4"/> 
+          GitHub
+        </SocialButton>
+
+        <SocialButton href="https://www.youtube.com/@jimcostdev">
+          <YoutubeIcon class="size-4"/> 
+          YouTube
+        </SocialButton>
+
+        <SocialButton href="mailto:jimcostdev@gmail.com">
+          <MailIcon class="size-4"/>
+          Contáctame
+        </SocialButton>
+      </div>
+    </div>
+</footer>

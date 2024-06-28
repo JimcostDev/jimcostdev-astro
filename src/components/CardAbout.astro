@@ -3,10 +3,8 @@ import Title from './TitleSection.astro'
 const { description, totalYears, nationality, iLiveIn } = Astro.props
 ---
 
-<section id="sobre-mi" class="px-6 py-6 flex flex-col items-center scroll-m-20 w-full mx-auto container lg:max-w-5xl md:max-w-2xl">
-    <Title>Sobre mí</Title>
     <article class="flex flex-col items-center justify-center gap-8 text-gray-700 md:flex-row">
-      <div class="bg-white shadow-md rounded-2xl p-8 text-center text-pretty md:text-left w-full max-w-5xl  hover:scale-95 hover:shadow-xl duration-700">
+      <div class="bg-white shadow-md rounded-2xl p-8 text-left text-pretty w-full max-w-5xl">
           <p class="mb-2"> Soy de <span class="text-primary"> {nationality} 🇨🇴</span> </p>
           <p class="mb-2"> Vivo en <span class="text-primary"> {iLiveIn} 🇪🇸 </span></p>
           <p> Más de <span class="text-primary"> {totalYears} años </span> de experiencia en la industria <span class="text-primary">tecnológica</span> </p>
@@ -14,4 +12,4 @@ const { description, totalYears, nationality, iLiveIn } = Astro.props
           <p>{description}</p>
       </div> <img width="200" height="200" src="/me.webp" alt="Ronaldo Jiménez" class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-sky-600/10 ring-1 ring-sky-900/70" style="object-position: 50% 50%">
     </article>
-</section>
+

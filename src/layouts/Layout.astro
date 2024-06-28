@@ -6,6 +6,7 @@ interface Props {
 import '@fontsource-variable/onest';
 const { title } = Astro.props;
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro'
 import { ViewTransitions } from 'astro:transitions';
 ---
 
@@ -37,6 +38,7 @@ import { ViewTransitions } from 'astro:transitions';
 		<main class="max-w-5xl px-4 m-auto">
 			<slot />
 		</main>
+		<Footer />
 	</body>
 </html>
 <style is:global>

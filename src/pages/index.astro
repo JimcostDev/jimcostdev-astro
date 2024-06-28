@@ -1,12 +1,41 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import About from '../components/About.astro'
 import Skills from '../components/Skills.astro'
+import Experience from '../components/Experience.astro'
+import Projects from '../components/Projects.astro'
+import About from '../components/About.astro'
+import SectionContainer from '../components/SectionContainer.astro'
+import Education from '../components/Education.astro'
+import Title from "../components/TitleSection.astro"
+
 ---
 
 <Layout title="JimcostDev by Ronaldo Jiménez | Software Developer">
-	<Skills/>
-	<About />
+	<SectionContainer id="skills">
+		<Title>Skills</Title>
+		<Skills/>
+	</SectionContainer>
+	
+	<SectionContainer id="experiencia">
+		<Title>Experiencia</Title>
+		<Experience />
+	</SectionContainer>
+	
+	<SectionContainer id="proyectos">
+		<Title>Proyectos</Title>
+		<Projects />
+	</SectionContainer>
+
+	<SectionContainer id="sobre-mi">
+		<Title>Sobre mí</Title>
+		<About />
+	</SectionContainer>
+
+	<SectionContainer id="estudios">
+		<Title>Estudios</Title>
+		<Education />	
+	</SectionContainer>
+
 </Layout>
 
 
