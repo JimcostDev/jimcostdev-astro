@@ -14,13 +14,12 @@ import { ViewTransitions } from 'astro:transitions';
 <html lang="es" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/logo.webp" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content="¡Hola! Soy Ronaldo Jiménez, un Backend Developer apasionado por la creación de soluciones tecnológicas. Descubre mi experiencia laboral, educación y más.">
-		<meta name="keywords" content="Ronaldo Jiménez, Backend Developer, Desarrollador web, Experiencia laboral, Educación, Portfolio, jimcostdev">
+		<meta name="keywords" content="Ronaldo Jiménez, Web Developer, Desarrollador web, jimcostdev, Python">
 		<meta name="author" content="Ronaldo Jiménez">
 		<meta property="og:title" content="JimcostDev by Ronaldo Jiménez | Backend Developer">
 		<meta property="og:description" content="¡Hola! Soy Ronaldo Jiménez, un Backend Developer apasionado por la creación de soluciones tecnológicas. Descubre mi experiencia laboral, educación y más.">
@@ -32,8 +31,7 @@ import { ViewTransitions } from 'astro:transitions';
 		<meta name="twitter:image" content="https://user-images.githubusercontent.com/53100460/254561844-6471bed7-ba32-4d66-b05f-007da9a95620.jpg">
 		<ViewTransitions />
 	</head>
-	<body class="min-h-screen">
-		<div class="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"><div class="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]"></div></div>
+	<body class="absolute inset-0 -z-10 h-full w-full bg-secondary bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
 		<Header />
 		<main class="max-w-5xl px-4 m-auto">
 			<slot />
@@ -44,7 +42,5 @@ import { ViewTransitions } from 'astro:transitions';
 <style is:global>
 	html {
 		font-family: 'Onest Variable' system-ui, sans-serif;
-		background-size: 224px;
-		color-scheme: dark light;
 	}
 </style>
