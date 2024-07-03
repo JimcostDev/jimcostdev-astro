@@ -2,7 +2,7 @@ name: Scheduled Build
 
 on:
   schedule:
-    - cron: '20 17 * * *' #'0 0 * * 0' # Cada domingo a medianoche
+    - cron: '0 0 * * 0' # Cada domingo a medianoche
 
 jobs:
   build:
