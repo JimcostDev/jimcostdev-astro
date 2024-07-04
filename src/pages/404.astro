@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LinkButton from "../components/LinkButton.astro"
+
+const title = "Página no encontrada";
+const description = "Lo sentimos, no podemos encontrar la página que estás buscando.";
+const suggestion = "Verifica la URL o regresa a la página principal.";
+---
+<Layout title="404 - JimcostDev">
+    <section class=" inset-0 -z-10 h-full w-full bg-secondary bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+            <div class="mx-auto max-w-screen-sm text-center">
+                <h1 class="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-tertiary">404</h1>
+                <p class="mb-4 text-3xl tracking-tight font-bold text-tertiary/70 md:text-4x">{title}</p>
+                <p class="mb-4 text-lg font-light text-gray-500">{description}</p>
+                <LinkButton href="/" target="">
+                    {suggestion}
+                </LinkButton>
+            </div>   
+        </div>
+    </section>
+</Layout>

@@ -5,83 +5,36 @@ import ProjectIcon from '../components/icons/Code.astro';
 import EducationIcon from '../components/icons/GraduationCap.astro';
 import AboutMeIcon from '../components/icons/User.astro';
 import ButtonNav from './ButtonNav.astro';
-import SocialButton from './SocialButton.astro';
-import MailIcon from '../components/icons/Mail.astro';
-import YoutubeIcon from '../components/icons/YouTube.astro';
-import GitHubIcon from './icons/GitHub.astro';
-import LinkedInIcon from './icons/LinkedIn.astro';
-import DocumentIcon from './icons/Doc.astro';
 ---
 
-<header class="w-full bg-BACKGROUND_MOBILE md:bg-BACKGROUND_DESKTOP bg-cover relative pb-2">
+<header class="w-full relative pb-2">
      <!-- Barra de navegación fija en la parte inferior para móvil, en la parte superior para escritorio -->
      <nav id="navegacion" class="fixed bottom-0 left-0 w-full shadow-sm bg-secondary text-tertiary py-3 z-50  md:top-0 md:bottom-auto ">
         <div class="container mx-auto max-w-4xl md:w-3/4 flex justify-between items-center px-8 md:px-0 md:space-x-4">
-          <ButtonNav href="#">
+          <ButtonNav href="/#">
             <HomeIcon class="size-5"/> 
             <span class="hidden md:inline">Inicio</span>
           </ButtonNav>
 
-          <ButtonNav href="#experiencia">
+          <ButtonNav href="/#experiencia">
             <ExperienceIcon class="size-5"/> 
             <span class="hidden md:inline">Experiencia</span>
           </ButtonNav>
 
-          <ButtonNav href="#proyectos">
+          <ButtonNav href="/#proyectos">
             <ProjectIcon class="size-5"/> 
             <span class="hidden md:inline">Proyectos</span>
           </ButtonNav>
 
-          <ButtonNav href="#sobre-mi">
+          <ButtonNav href="/#sobre-mi">
             <AboutMeIcon class="size-5"/> 
             <span class="hidden md:inline">Sobre mí</span>
           </ButtonNav>
 
-          <ButtonNav href="#estudios">
+          <ButtonNav href="/#estudios">
             <EducationIcon class="size-5"/> 
             <span class="hidden md:inline">Estudios</span>
           </ButtonNav>
         </div>
       </nav>
-      <!-- Contenido principal que se desplazará -->
-      <div id="presentacion" class="pt-16 md:pt-24 px-0 relative">
-      
-        <div id="img-usuario" class="mb-4 relative mx-auto size-48 md:size-64">
-          <img src="/dev.webp" class="w-full h-full object-cover rounded-full" alt="Ronaldo Jiménez">
-        </div>
-
-        <h1 class="text-2xl md:text-4xl font-bold px-8 text-center">
-          HOLA, SOY <span class="text-secondary">RONALDO JIMÉNEZ</span>
-        </h1>
-        
-        <div class="flex flex-col items-center justify-between mt-1 px-8 text-center">
-          <h3 class="text-lg md:text-2xl font-semibold mb-2">SOFTWARE DEVELOPER</h3>
-          <!-- Redes sociales -->
-          <div class="mb-2">
-            <SocialButton href="https://www.linkedin.com/in/ronaldo-jimenez">
-              <LinkedInIcon class="size-4"/>
-               LinkedIn
-            </SocialButton>
-
-            <SocialButton href="https://github.com/JimcostDev">
-              <GitHubIcon class="size-4"/> 
-              GitHub
-            </SocialButton>
-
-            <SocialButton href="https://www.youtube.com/@jimcostdev">
-              <YoutubeIcon class="size-4"/> 
-              YouTube
-            </SocialButton>
-
-            <SocialButton href="mailto:jimcostdev@gmail.com">
-              <MailIcon class="size-4"/>
-              Contáctame
-            </SocialButton>
-
-            <SocialButton href="https://cv.jimcostdev.com/">
-              <DocumentIcon class="size-4"/>
-              Descargar CV
-            </SocialButton>
-          </div>
-        </div>
 </header> 
