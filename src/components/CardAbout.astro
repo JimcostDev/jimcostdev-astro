@@ -1,10 +1,9 @@
 ---
-import Title from './TitleSection.astro'
 const { description, totalYears, nationality, iLiveIn } = Astro.props
 ---
 
     <article class="flex flex-col items-center justify-center gap-8 text-gray-700 md:flex-row">
-      <div class="bg-white shadow-md rounded-2xl p-8 text-left text-pretty w-full max-w-5xl">
+      <div class="bg-secondary shadow-md rounded-2xl p-8 text-left text-pretty w-full max-w-5xl">
           <p class="mb-2"> Soy de <span class="text-primary"> {nationality} 🇨🇴</span> </p>
           <p class="mb-2"> Vivo en <span class="text-primary"> {iLiveIn} 🇪🇸 </span></p>
           <p> Más de <span class="text-primary"> {totalYears} años </span> de experiencia en la industria <span class="text-primary">tecnológica</span> </p>
