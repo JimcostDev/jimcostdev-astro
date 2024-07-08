@@ -2,7 +2,7 @@ name: Scheduled Build
 
 on:
   schedule:
-    - cron: '0 0 * * 0' # Cada domingo a medianoche
+    - cron: '0 0 * * *' # medianoche (everyday)
 
 jobs:
   build:
@@ -26,4 +26,4 @@ jobs:
       - name: Deploy to Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: npx vercel --prod
+        run: npx vercel --prod --confirm
