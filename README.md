@@ -6,16 +6,10 @@
 
 Este es mi portafolio personal creado con [Astro](https://astro.build/) y [Tailwind CSS](https://tailwindcss.com/). Aquí encontrarás información sobre mis proyectos, habilidades y experiencia.
 
-## 🚀 Tecnologías Utilizadas
-
-- **Astro**: Un moderno generador de sitios estáticos.
-- **Tailwind CSS**: Un framework de CSS para un desarrollo rápido y estilizado.
-
 ### Clonar el repositorio
 
 ```bash
 git clone https://github.com/JimcostDev/jimcostdev-astro.git
-cd portfolio-astro
 ```
 
 ## 🧞 Comandos
@@ -33,4 +27,4 @@ Todos los comandos se ejecutan desde la raíz del proyecto, desde una terminal:
 
 ## 👀 ¿Quieres aprender más?
 
-No dudes en consultar nuestra [our documentation](https://docs.astro.build) o unirte a nuestro servidor [Discord server](https://astro.build/chat).
+No dudes en consultar la [documentación](https://docs.astro.build) o unirte al servidor de [Discord](https://astro.build/chat).
