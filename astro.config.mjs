@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import vercel from '@astrojs/vercel/serverless';
 
 import tailwind from "@astrojs/tailwind";
 
@@ -6,7 +7,12 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [tailwind()],
   output: 'hybrid', // or 'server'
+  adapter: vercel(),
   experimental: {
     serverIslands: true,
   },
 });
+
+import { defineConfig } from 'astro/config';
+
+
