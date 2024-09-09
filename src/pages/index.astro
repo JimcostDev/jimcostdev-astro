@@ -15,11 +15,6 @@ import Title from "../components/TitleSection.astro"
 	<SectionContainer id="principal">
 		<Principal/>
 	</SectionContainer>
-
-	<SectionContainer id="skills">
-		<Title>Skills</Title>
-		<Skills/>
-	</SectionContainer>
 	
 	<SectionContainer id="experiencia">
 		<Title>Experiencia</Title>
@@ -33,7 +28,12 @@ import Title from "../components/TitleSection.astro"
 
 	<SectionContainer id="sobre-mi">
 		<Title>Sobre mí</Title>
-		<About />
+		<About server:defer/>
+	</SectionContainer>
+
+	<SectionContainer id="skills">
+		<Title>Skills</Title>
+		<Skills/>
 	</SectionContainer>
 
 	<SectionContainer id="estudios">
