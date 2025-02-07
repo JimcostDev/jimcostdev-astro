@@ -7,7 +7,7 @@ import '@fontsource-variable/onest';
 const { title } = Astro.props;
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro'
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 ---
 
 <!doctype html>
@@ -18,18 +18,18 @@ import { ViewTransitions } from 'astro:transitions';
 		<link rel="icon" type="image/svg+xml" href="/logo.webp" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<meta name="description" content="Soy Ingeniero Informático con sólida experiencia en el desarrollo de software y un enfoque especializado en desarrollo web utilizando Python y JavaScript. A lo largo de mi carrera, me he destacado no solo por mis habilidades técnicas, sino también por mi capacidad para enseñar y mentorar, lo que me ha permitido ejercer como docente y tutor de programación, acompañando a estudiantes en su formación. Además, cuento con certificaciones como Associate Developer por MongoDB y Azure Fundamentals por Microsoft, lo que respalda mis conocimientos en tecnologías de bases de datos y entornos en la nube.">
-		<meta name="keywords" content="Ronaldo Jiménez, Web Developer, Desarrollador web, jimcostdev, Python">
+		<meta name="description" content="Ingeniero informático apasionado por la tecnología y el desarrollo de software, con experiencia en creación de soluciones digitales y vocación docente. ¡Descubre cómo puedo ayudarte a innovar!">
+		<meta name="keywords" content="Ronaldo Jiménez, jimcostdev, software engineer, python, golang">
 		<meta name="author" content="Ronaldo Jiménez">
 		<meta property="og:title" content="JimcostDev by Ronaldo Jiménez | Software Engineer">
-		<meta property="og:description" content="Soy Ingeniero Informático con sólida experiencia en el desarrollo de software y un enfoque especializado en desarrollo web utilizando Python y JavaScript. A lo largo de mi carrera, me he destacado no solo por mis habilidades técnicas, sino también por mi capacidad para enseñar y mentorar, lo que me ha permitido ejercer como docente y tutor de programación, acompañando a estudiantes en su formación. Además, cuento con certificaciones como Associate Developer por MongoDB y Azure Fundamentals por Microsoft, lo que respalda mis conocimientos en tecnologías de bases de datos y entornos en la nube.">
+		<meta property="og:description" content="Ingeniero informático apasionado por la tecnología y el desarrollo de software, con experiencia en creación de soluciones digitales y vocación docente. ¡Descubre cómo puedo ayudarte a innovar!">
 		<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/jimcostdev-firebase.appspot.com/o/contacto.webp?alt=media&token=f8d75f0d-7533-4d07-b440-876839a47852">
 		<meta property="og:url" content="https://www.jimcostdev.com">
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name="twitter:title" content="JimcostDev by Ronaldo Jiménez | Software Engineer">
-		<meta name="twitter:description" content="Soy Ingeniero Informático con sólida experiencia en el desarrollo de software y un enfoque especializado en desarrollo web utilizando Python y JavaScript. A lo largo de mi carrera, me he destacado no solo por mis habilidades técnicas, sino también por mi capacidad para enseñar y mentorar, lo que me ha permitido ejercer como docente y tutor de programación, acompañando a estudiantes en su formación. Además, cuento con certificaciones como Associate Developer por MongoDB y Azure Fundamentals por Microsoft, lo que respalda mis conocimientos en tecnologías de bases de datos y entornos en la nube.">
+		<meta name="twitter:description" content="Ingeniero informático apasionado por la tecnología y el desarrollo de software, con experiencia en creación de soluciones digitales y vocación docente. ¡Descubre cómo puedo ayudarte a innovar!">
 		<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/jimcostdev-firebase.appspot.com/o/contacto.webp?alt=media&token=f8d75f0d-7533-4d07-b440-876839a47852">
-		<ViewTransitions />
+		<ClientRouter />
 	</head>
 	<body class="absolute inset-0 -z-10 h-full w-full bg-secondary bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
 		<Header />
