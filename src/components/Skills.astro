@@ -1,17 +1,11 @@
 ---
 import PythonIcon from './icons/Python.astro';
-import TailwindIcon from './icons/Tailwind.astro';
-import AstroIcon from './icons/Ast.astro';
-import FastAPIIcon from './icons/FastAPI.astro';
 import GoIcon from './icons/Go.astro';
 import MongoDDIcon from './icons/MongoDB.astro';
 import MSSQLIcon from './icons/MSSQL.astro';
 import JSIcon from './icons/JS.astro';
 import Skill from './PillSkill.astro';
-import ReactIcon from './icons/React.astro';
 import PostgresIcon from './icons/Postgres.astro';
-import DjangoIcon from './icons/Django.astro';
-import GitIcon from './icons/Git.astro';
 ---
     <div class="flex flex-wrap justify-around">
         <Skill>
@@ -21,6 +15,10 @@ import GitIcon from './icons/Git.astro';
         <Skill>
             <GoIcon class="size-5 md:size-8" slot="icon" />
             <span slot="text">Go</span>
+        </Skill>
+        <Skill>
+            <JSIcon class="size-5 md:size-8" slot="icon" />
+            <span slot="text">JavaScript</span>
         </Skill>
         <Skill>
             <MongoDDIcon class="size-5 md:size-8" slot="icon" />
@@ -33,10 +31,6 @@ import GitIcon from './icons/Git.astro';
         <Skill>
             <MSSQLIcon class="size-5 md:size-8" slot="icon" />
             <span slot="text">SQL Server</span>
-        </Skill>
-        <Skill>
-            <AstroIcon class="size-5 md:size-8" slot="icon" />
-            <span slot="text">Astro</span>
         </Skill>
     </div>
 
