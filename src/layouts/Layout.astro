@@ -2,7 +2,7 @@
 interface Props {
 	title: string;
 }
-
+import '../styles/global.css';
 import '@fontsource-variable/onest';
 const { title } = Astro.props;
 import Header from '../components/Header.astro';
@@ -31,7 +31,7 @@ import { ClientRouter } from 'astro:transitions';
 		<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/jimcostdev-firebase.appspot.com/o/contacto.webp?alt=media&token=f8d75f0d-7533-4d07-b440-876839a47852">
 		<ClientRouter />
 	</head>
-	<body class="absolute inset-0 -z-10 h-full w-full bg-secondary bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
+	<body class="absolute inset-0 -z-10 h-full w-full bg-sky-50 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
 		<Header />
 		<main class="max-w-5xl px-4 m-auto">
 			<slot />
