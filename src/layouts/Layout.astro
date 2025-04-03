@@ -1,46 +1,96 @@
 ---
 interface Props {
-	title: string;
+  title: string;
 }
 import '../styles/global.css';
 import '@fontsource-variable/onest';
 const { title } = Astro.props;
 import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro'
+import Footer from '../components/Footer.astro';
 import { ClientRouter } from 'astro:transitions';
+
+// Metadatos base
+const pageTitle = `${title} | JimcostDev - Software Engineer`;
+const pageDescription = "Ingeniero informático especializado en desarrollo de software y soluciones tecnológicas innovadoras. Experiencia en Python, Go y desarrollo full-stack.";
+const canonicalUrl = "https://www.jimcostdev.com";
+const ogImage = "https://firebasestorage.googleapis.com/v0/b/jimcostdev-firebase.appspot.com/o/contacto.webp?alt=media&token=f8d75f0d-7533-4d07-b440-876839a47852";
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/logo.webp" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<meta name="description" content="Ingeniero informático apasionado por la tecnología y el desarrollo de software, con experiencia en creación de soluciones digitales y vocación docente. ¡Descubre cómo puedo ayudarte a innovar!">
-		<meta name="keywords" content="Ronaldo Jiménez, jimcostdev, software engineer, python, golang">
-		<meta name="author" content="Ronaldo Jiménez">
-		<meta property="og:title" content="JimcostDev by Ronaldo Jiménez | Software Engineer">
-		<meta property="og:description" content="Ingeniero informático apasionado por la tecnología y el desarrollo de software, con experiencia en creación de soluciones digitales y vocación docente. ¡Descubre cómo puedo ayudarte a innovar!">
-		<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/jimcostdev-firebase.appspot.com/o/contacto.webp?alt=media&token=f8d75f0d-7533-4d07-b440-876839a47852">
-		<meta property="og:url" content="https://www.jimcostdev.com">
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:title" content="JimcostDev by Ronaldo Jiménez | Software Engineer">
-		<meta name="twitter:description" content="Ingeniero informático apasionado por la tecnología y el desarrollo de software, con experiencia en creación de soluciones digitales y vocación docente. ¡Descubre cómo puedo ayudarte a innovar!">
-		<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/jimcostdev-firebase.appspot.com/o/contacto.webp?alt=media&token=f8d75f0d-7533-4d07-b440-876839a47852">
-		<ClientRouter />
-	</head>
-	<body class="absolute inset-0 -z-10 h-full w-full bg-sky-50 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
-		<Header />
-		<main class="max-w-5xl px-4 m-auto">
-			<slot />
-		</main>
-		<Footer />
-	</body>
+<html lang="es" class="scroll-smooth" itemscope itemtype="https://schema.org/Person">
+  <head>
+    <!-- Metadatos básicos -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="language" content="Spanish" />
+    
+    <!-- Título y descripción -->
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Favicon optimizado -->
+    <link rel="icon" type="image/svg+xml" href="/logo.webp" sizes="any" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="JimcostDev" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:site" content="@jimcostdev" />
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ronaldo Jiménez",
+        "jobTitle": "Software Engineer",
+        "url": "https://www.jimcostdev.com",
+        "sameAs": [
+          "https://github.com/jimcostdev",
+          "https://linkedin.com/in/ronaldo-jimenez"
+        ],
+        "image": "https://firebasestorage.googleapis.com/v0/b/jimcostdev-firebase.appspot.com/o/contacto.webp?alt=media&token=f8d75f0d-7533-4d07-b440-876839a47852",
+        "description": "Ingeniero informático especializado en desarrollo de software y soluciones tecnológicas innovadoras."
+      }
+    </script>
+    
+    <!-- Preconexiones importantes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <ClientRouter />
+  </head>
+  
+  <body class="absolute inset-0 -z-10 h-full w-full bg-sky-50 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed top-4 left-4 bg-sky-600 text-white px-4 py-2 rounded-lg">
+      Saltar al contenido principal
+    </a>
+    
+    <Header />
+    <main id="main-content" class="max-w-5xl px-4 m-auto">
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
+
 <style is:global>
-	html {
-		font-family: 'Onest Variable' system-ui, sans-serif;
-	}
+  html {
+    font-family: 'Onest Variable', system-ui, sans-serif;
+    font-display: swap;
+  }
 </style>
