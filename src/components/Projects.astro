@@ -1,9 +1,9 @@
 ---
-import Link from "./icons/Link.astro"
-import LinkButton from "./LinkButton.astro"
+import Link from "./icons/Link.astro";
+import LinkButton from "./LinkButton.astro";
 import { cargarDatos } from "../api/loadData.js";
 
-// info de proyectos
+// Carga de información de proyectos
 const projectData = await cargarDatos("project");
 const getProjects = Array.isArray(projectData) ? projectData : [projectData];
 ---
@@ -11,45 +11,45 @@ const getProjects = Array.isArray(projectData) ? projectData : [projectData];
 <div class="flex flex-col gap-y-16 p-8">
   {
     getProjects.map(({ image, title, description, stack, link }) => (
-    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-    <div class="w-full md:w-1/2">
-      <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-hidden rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-200 lg:hover:border-gray-300 lg:hover:bg-gray-400/50">
-        <img
-          alt={title}
-          class="w-full h-auto sm:h-56 object-cover object-center transition-transform duration-500 ease-in-out md:h-full md:scale-100 md:group-hover:scale-105"
-          loading="lazy"
-          src={image}
-        />
-      </div>
-    </div>
-
-  <div class="w-full md:w-1/2 md:max-w-lg">
-    <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-      {title}
-    </h3>
-    <div class="flex flex-wrap mt-2">
-      <ul class="flex flex-row flex-wrap mb-2 gap-x-2">
-          {stack.map((tech: string) => (
-            <li>
-              <span class="flex my-1 gap-x-2 rounded-full text-xs bg-sky-200/60 text-gray-800 py-1 px-2">
-                # {tech}
-              </span>
-            </li>
-          ))}
-        </ul>
-
-      <div class="text-gray-500">{description}</div>
-      <footer class="flex items-end justify-start gap-x-4">
+      <article class="flex flex-col md:flex-row md:space-x-8 group">
+        {/* Imagen del proyecto */}
+        <div class="w-full md:w-1/2">
+          <div class="relative flex flex-col items-center transition duration-500 ease-in-out transform shadow-xl overflow-hidden rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-200 lg:hover:border-gray-300 lg:hover:bg-gray-400/50 mb-3">
+            <img
+              alt={title}
+              class="w-full h-auto sm:h-56 object-cover object-center transition-transform duration-500 ease-in-out md:h-full md:group-hover:scale-105"
+              loading="lazy"
+              src={image}
+            />
+          </div>
+        </div>
+        {/* Contenido del proyecto */}
+        <div class="w-full md:w-1/2 md:max-w-lg flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold text-gray-800 mt-2">
+              {title}
+            </h3>
+            <ul class="flex flex-wrap mt-2 gap-2">
+              {stack.map((tech: string) => (
+                <li>
+                  <span class="flex items-center rounded-full text-xs bg-sky-200/60 text-gray-800 py-1 px-2">
+                    # {tech}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p class="mt-2 text-gray-500">{description}</p>
+          </div>
           {link && (
-            <LinkButton href={link}>
-              <Link class="size-4" />
-              Ver proyecto
-            </LinkButton>
+            <footer class="mt-2">
+              <LinkButton href={link}>
+                <Link class="size-4" />
+                <span>Ver proyecto</span>
+              </LinkButton>
+            </footer>
           )}
-        </footer>
-    </div>
-  </div>
-</article>
+        </div>
+      </article>
     ))
   }
 </div>

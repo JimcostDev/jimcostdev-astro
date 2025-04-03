@@ -7,39 +7,45 @@ import YoutubeIcon from './icons/YouTube.astro';
 import MailIcon from './icons/Mail.astro';
 ---
 
-<footer class="text-sky-950 pb-16">
-    <div class="footer-content text-center">
-      <div class="logo mb-4">
-        <img src="/logo.svg" width="128" height="128" alt="jimcostdev logo" class="mx-auto opacity-85">
-      </div>
-      <div class="quote mb-4 px-4">
-        <p class="text-base italic">"Ponte un blanco alto y haz fervientes esfuerzos por alcanzarlo y no te desanimes" EGW</p>
-      </div>
-      <div class="footer-bottom">
-        <p class="text-sm mb-4">Hecho con 💙 - © Ronaldo Jiménez {currentYear}</p>
-      </div>
+<footer class="bg-sky-50 text-sky-950 py-8">
+  <div class="max-w-3xl mx-auto flex flex-col items-center text-center">
+    
+    <!-- Logo -->
+    <img src="/logo.svg" width="96" height="96" alt="jimcostdev logo" class="mb-4 opacity-90 transition-transform hover:scale-105 duration-300">
 
-      <!-- Redes sociales -->
-      <div class="mb-2">
-        <SocialButton href="https://www.linkedin.com/in/ronaldo-jimenez" bgColor="hover:bg-blue-300/10" borderColor="border-blue-300">
-          <LinkedInIcon class="size-4"/>
-           LinkedIn
-        </SocialButton>
+    <!-- Frase motivacional -->
+    <blockquote class="text-base italic text-gray-700 px-4 max-w-lg">
+      "Ponte un blanco alto y haz fervientes esfuerzos por alcanzarlo y no te desanimes" <span class="font-semibold">EGW</span>
+    </blockquote>
 
-        <SocialButton href="https://github.com/JimcostDev" bgColor="hover:bg-gray-400/10" borderColor="border-gray-400">
-          <GitHubIcon class="size-4"/> 
-          GitHub
-        </SocialButton>
+    <!-- Divider -->
+    <div class="border-t border-gray-300/50 w-3/4 my-4"></div>
 
-        <SocialButton href="https://www.youtube.com/@jimcostdev?sub_confirmation=1" bgColor="hover:bg-red-300/10" borderColor="border-red-300">
-          <YoutubeIcon class="size-4"/> 
-          YouTube
-        </SocialButton>
+    <!-- Redes sociales -->
+    <div class="flex flex-wrap justify-center gap-3">
+      <SocialButton href="https://www.linkedin.com/in/ronaldo-jimenez" bgColor="hover:bg-blue-300/10" borderColor="border-blue-300">
+        <LinkedInIcon class="size-5 md:size-6 transition-transform hover:scale-105 duration-300"/>
+      </SocialButton>
 
-        <SocialButton href="mailto:jimcostdev@gmail.com" bgColor="hover:bg-yellow-300/10" borderColor="border-yellow-400">
-          <MailIcon class="size-4"/>
-          Contáctame
-        </SocialButton>
-      </div>
+      <SocialButton href="https://github.com/JimcostDev" bgColor="hover:bg-gray-400/10" borderColor="border-gray-400">
+        <GitHubIcon class="size-5 md:size-6 transition-transform hover:scale-105 duration-300"/> 
+      </SocialButton>
+
+      <SocialButton href="https://www.youtube.com/@jimcostdev?sub_confirmation=1" bgColor="hover:bg-red-300/10" borderColor="border-red-300">
+        <YoutubeIcon class="size-5 md:size-6 transition-transform hover:scale-105 duration-300"/> 
+      </SocialButton>
+
+      <SocialButton href="mailto:jimcostdev@gmail.com" bgColor="hover:bg-yellow-300/10" borderColor="border-yellow-400">
+        <MailIcon class="size-5 md:size-6 transition-transform hover:scale-105 duration-300"/>
+      </SocialButton>
     </div>
+
+    <!-- Divider -->
+    <div class="border-t border-gray-300/50 w-3/4 my-4"></div>
+
+    <!-- Derechos -->
+    <p class="text-sm text-gray-600">
+      Hecho con 💙 - © <span class="font-semibold">Ronaldo Jiménez {currentYear}</span>
+    </p>
+  </div>
 </footer>

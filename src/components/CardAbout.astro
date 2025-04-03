@@ -2,13 +2,13 @@
 const { description, totalYears, nationality, iLiveIn } = Astro.props
 ---
 
-    <article class="flex flex-col items-center justify-center gap-8 text-gray-700 md:flex-row">
-      <div class="bg-sky-50 shadow-md rounded-2xl p-8 text-left text-pretty w-full max-w-5xl">
-          <p class="mb-2"> Soy de <span class="text-sky-400"> {nationality} 🇨🇴</span> </p>
-          <p class="mb-2"> Vivo en <span class="text-sky-400"> {iLiveIn} 🇪🇸 </span></p>
-          <p> Más de <span class="text-sky-400"> {totalYears} años </span> de experiencia en la industria <span class="text-sky-400">tecnológica</span> </p>
-          <hr class="h-[0.5px] my-8 bg-gray-300 border-0">
-          <p>{description}</p>
-      </div> <img width="200" height="200" src="/me.webp" alt="Ronaldo Jiménez" class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-sky-600/10 ring-1 ring-sky-900/70" style="object-position: 50% 50%">
-    </article>
+<article class="flex flex-col items-center justify-center gap-8 text-gray-700 md:flex-row">
+    <div class="bg-sky-50 shadow-md rounded-2xl p-8 text-left text-pretty w-full max-w-5xl">
+      <p class="mb-2"> Soy de <span class="text-sky-400"> {nationality} 🇨🇴</span> </p>
+      <p class="mb-2"> Vivo en <span class="text-sky-400"> {iLiveIn} 🇪🇸 </span></p>
+      <p> Más de <span class="text-sky-400"> {totalYears} años </span> de experiencia en la industria <span class="text-sky-400">tecnológica</span> </p>
+      <hr class="h-[0.5px] my-8 bg-sky-300 border-0">
+      <p>{description}</p>
+    </div> <img width="200" height="200" src="/me.webp" alt="Ronaldo Jiménez" class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-sky-600/10 ring-1 ring-sky-900/70" style="object-position: 50% 50%">
+</article>
 

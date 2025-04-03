@@ -1,22 +1,64 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import LinkButton from "../components/LinkButton.astro"
+import LinkButton from "../components/LinkButton.astro";
 
 const title = "Página no encontrada";
 const description = "Lo sentimos, no podemos encontrar la página que estás buscando.";
-const suggestion = "Verifica la URL o regresa a la página principal.";
+const suggestion = "Regresar a la página principal";
 ---
-<Layout title="404 - JimcostDev">
-    <section class=" inset-0 -z-10 h-full w-full bg-sky-50 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
-        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-            <div class="mx-auto max-w-screen-sm text-center">
-                <h1 class="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-sky-950">404</h1>
-                <p class="mb-4 text-3xl tracking-tight font-bold text-sky-950/70 md:text-4x">{title}</p>
-                <p class="mb-4 text-lg font-light text-gray-500">{description}</p>
-                <LinkButton href="/" target="">
-                    {suggestion}
-                </LinkButton>
-            </div>   
+
+<Layout title="404 - Página no encontrada">
+    <section class="relative min-h-screen w-full overflow-hidden bg-sky-950">
+        <!-- Estrellas animadas -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwMCIgaGVpZ2h0PSIyMDAwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmYiPjxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswOzEiIGR1cj0iNXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+PC9yZWN0Pjwvc3ZnPg==')] opacity-10 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_75%)]"></div>
+
+        <!-- Contenido principal -->
+        <div class="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4 py-16">
+
+            <!-- Texto del error -->
+            <h1 class="text-8xl md:text-9xl font-black bg-gradient-to-r from-sky-400 to-sky-600 bg-clip-text text-transparent mb-6">
+                404
+            </h1>
+            
+            <div class="space-y-6 max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-sky-50">{title}</h2>
+                <p class="text-lg md:text-xl text-sky-200/80 leading-relaxed">
+                    {description}<br>
+                    <span class="inline-block mt-2 text-sky-400">¿Quizás un error de navegación interestelar?</span>
+                </p>
+                
+                <!-- Botón principal -->
+                <div class="mt-8">
+                    <LinkButton 
+                        href="/" 
+                        target="_self"
+                        class="group inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-700 text-sky-50 px-8 py-4 rounded-full transition-all transform hover:scale-105 shadow-lg shadow-sky-400/20"
+                    >
+                        <span>{suggestion}</span>
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </LinkButton>
+                </div>
+
+                <!-- Enlace secundario -->
+                <p class="mt-6 text-sky-300/80">
+                    O explora mis 
+                    <a href="https://github.com/JimcostDev" class="text-sky-400 hover:text-sky-300 border-b border-dashed border-sky-400/50 hover:border-solid transition-all">
+                        proyectos destacados
+                    </a>
+                </p>
+            </div>
         </div>
     </section>
 </Layout>
+
+<style is:global>
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+</style>

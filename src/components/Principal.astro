@@ -6,42 +6,44 @@ import GitHubIcon from './icons/GitHub.astro';
 import LinkedInIcon from './icons/LinkedIn.astro';
 import DocumentIcon from './icons/Doc.astro';
 ---
-<div id="presentacion" class="pt-9 md:pt-18 px-0 relative">
-        <div id="img-usuario" class="mb-4 relative mx-auto size-64 md:size-72">
-          <img src="/dev.webp" class="w-full h-full object-cover rounded-full" alt="Ronaldo Jiménez">
-        </div>
 
-        <h1 class="text-2xl md:text-4xl font-bold px-8 text-center">
-          HOLA, SOY <span class="text-sky-400">RONALDO JIMÉNEZ</span>
-        </h1>
-        
-        <div class="flex flex-col items-center justify-between mt-1 text-center">
-          <h3 class="text-lg md:text-2xl font-semibold mb-2">SOFTWARE ENGINEER</h3>
-          <!-- Redes sociales -->
-          <div class="mb-2">
-            <SocialButton href="https://www.linkedin.com/in/ronaldo-jimenez" bgColor="hover:bg-blue-300/10" borderColor="border-blue-300">
-              <LinkedInIcon class="size-4"/>
-               LinkedIn
-            </SocialButton>
+<div id="presentacion" class="pt-9 md:pt-18 px-4 relative max-w-screen-lg mx-auto">
+  <div id="img-usuario" class="mb-6 relative mx-auto w-64 h-64 md:w-72 md:h-72">
+    <img
+      src="/dev.webp"
+      class="w-full h-full object-cover rounded-full shadow-lg ring-2 ring-sky-400"
+      alt="Ronaldo Jiménez"
+    >
+  </div>
 
-            <SocialButton href="https://github.com/JimcostDev" bgColor="hover:bg-gray-400/10" borderColor="border-gray-400">
-              <GitHubIcon class="size-4"/> 
-              GitHub
-            </SocialButton>
-
-            <SocialButton href="https://www.youtube.com/@jimcostdev?sub_confirmation=1" bgColor="hover:bg-red-300/10" borderColor="border-red-300">
-              <YoutubeIcon class="size-4"/> 
-              YouTube
-            </SocialButton>
-
-            <SocialButton href="mailto:jimcostdev@gmail.com" bgColor="hover:bg-yellow-300/10" borderColor="border-yellow-400">
-              <MailIcon class="size-4"/>
-              Contáctame
-            </SocialButton>
-
-            <SocialButton href="https://cv.jimcostdev.com/" bgColor="hover:bg-green-300/10" borderColor="border-green-300">
-              <DocumentIcon class="size-4"/>
-              Descargar CV
-            </SocialButton>
-          </div>
+  <h1 class="text-2xl md:text-4xl font-bold text-center px-4">
+    HOLA, SOY <span class="text-sky-400">RONALDO JIMÉNEZ</span>
+  </h1>
+  
+  <div class="flex flex-col items-center mt-4">
+    <h3 class="text-lg md:text-2xl font-semibold mb-4">SOFTWARE ENGINEER</h3>
+    <!-- Redes sociales -->
+    <div class="flex flex-wrap justify-center gap-4">
+      <SocialButton href="https://www.linkedin.com/in/ronaldo-jimenez" bgColor="hover:bg-blue-300/10" borderColor="border-blue-300">
+        <LinkedInIcon class="size-5 md:size-6"/>
+        LinkedIn
+      </SocialButton>
+      <SocialButton href="https://github.com/JimcostDev" bgColor="hover:bg-gray-400/10" borderColor="border-gray-400">
+        <GitHubIcon class="size-5 md:size-6"/>
+        GitHub
+      </SocialButton>
+      <SocialButton href="https://www.youtube.com/@jimcostdev?sub_confirmation=1" bgColor="hover:bg-red-300/10" borderColor="border-red-300">
+        <YoutubeIcon class="size-5 md:size-6"/>
+        YouTube
+      </SocialButton>
+      <SocialButton href="mailto:jimcostdev@gmail.com" bgColor="hover:bg-yellow-300/10" borderColor="border-yellow-400">
+        <MailIcon class="size-5 md:size-6"/>
+        Contáctame
+      </SocialButton>
+      <SocialButton href="https://cv.jimcostdev.com/" bgColor="hover:bg-green-300/10" borderColor="border-green-300">
+        <DocumentIcon class="size-5 md:size-6"/>
+        Descargar CV
+      </SocialButton>
+    </div>
+  </div>
 </div>
