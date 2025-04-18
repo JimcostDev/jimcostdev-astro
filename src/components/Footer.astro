@@ -1,5 +1,4 @@
 ---
-const currentYear = new Date().getFullYear();
 import SocialButton from './SocialButton.astro';
 import LinkedInIcon from './icons/LinkedIn.astro';
 import GitHubIcon from './icons/GitHub.astro';
@@ -8,7 +7,7 @@ import MailIcon from './icons/Mail.astro';
 ---
 
 <footer class="bg-sky-50 text-sky-950 py-8">
-  <div class="max-w-3xl mx-auto flex flex-col items-center text-center">
+  <div class="max-w-3xl mx-auto flex flex-col items-center text-center mb-10">
     
     <!-- Logo -->
     <img src="/logo.svg" width="96" height="96" alt="jimcostdev logo" class="mb-4 opacity-90 transition-transform hover:scale-105 duration-300">
@@ -45,7 +44,16 @@ import MailIcon from './icons/Mail.astro';
 
     <!-- Derechos -->
     <p class="text-sm text-gray-600">
-      Hecho con 💙 - © <span class="font-semibold">Ronaldo Jiménez {currentYear}</span>
+      Hecho con 💙 - © <span class="font-semibold">Ronaldo Jiménez <span id="currentYear"></span></span>
     </p>
   </div>
 </footer>
+<script>
+  // Obtener el elemento donde mostrar el año
+  const yearElement = document.getElementById('currentYear');
+  
+  // Actualizar con el año actual del cliente
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear().toString();
+  }
+</script>
