@@ -3,12 +3,33 @@ const { description, totalYears, nationality, iLiveIn } = Astro.props
 ---
 
 <article class="flex flex-col items-center justify-center gap-8 text-gray-700 md:flex-row">
-    <div class="bg-sky-50 shadow-md rounded-2xl p-8 text-left text-pretty w-full max-w-5xl">
-      <p class="mb-2"> Soy de <span class="text-sky-400"> {nationality} 🇨🇴</span> </p>
-      <p class="mb-2"> Vivo en <span class="text-sky-400"> {iLiveIn} 🇪🇸 </span></p>
-      <p> Más de <span class="text-sky-400"> {totalYears} años </span> de experiencia en la industria <span class="text-sky-400">tecnológica</span> </p>
-      <hr class="h-[0.5px] my-8 bg-sky-300 border-0">
-      <p>{description}</p>
-    </div> <img width="200" height="200" src="/me.webp" alt="Ronaldo Jiménez" class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-sky-600/10 ring-1 ring-sky-900/70" style="object-position: 50% 50%">
+  <div class="bg-sky-50 shadow-md rounded-2xl p-8 w-full max-w-5xl text-center space-y-4">
+    <div class="flex items-center justify-center">
+      <div class="px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-sm font-medium">
+        🚀  <span class="font-semibold">{totalYears}+ años</span> de experiencia
+      </div>
+    </div>
+
+    <div class="flex justify-center items-center gap-3 text-gray-600 mb-4">
+      <span>📍 <span class="text-sky-900">{nationality} 🇨🇴</span></span>
+      <span class="text-2xl">→</span>
+      <span>🏝 <span class="text-sky-900">{iLiveIn} 🇪🇸</span></span>
+    </div>
+    <!-- Divisor con gradiente -->
+	  <div class="w-full max-w-xl h-px bg-gradient-to-r from-transparent via-sky-400 to-transparent my-6"></div>
+    <!-- Descripción -->
+    <p class="text-gray-600 text-pretty mt-6">
+      {description}
+    </p>
+  </div>
+
+  <!-- Imagen (mantenemos el estilo original) -->
+  <img 
+    width="200" 
+    height="200" 
+    src="/me.webp" 
+    alt="Ronaldo Jiménez" 
+    class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-sky-600/10 ring-1 ring-sky-900/70"
+    style="object-position: 50% 50%">
 </article>
 

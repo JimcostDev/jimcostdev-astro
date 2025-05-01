@@ -9,11 +9,20 @@ import MailIcon from './icons/Mail.astro';
 <footer class="bg-sky-50 text-sky-950 py-8">
   <div class="max-w-3xl mx-auto flex flex-col items-center text-center mb-12 md:mb-4">
     
-    <!-- Logo -->
-    <img src="/logo.svg" width="96" height="96" alt="jimcostdev logo" class="mb-4 opacity-90 transition-transform hover:scale-105 duration-300">
+    <!-- Logo con efecto de gradiente -->
+	  <div class="group relative">
+      <div class="absolute -inset-1 bg-gradient-to-r from-sky-400 to-sky-600 rounded-full blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
+      <img
+        src="/logo.svg"
+        width="96"
+        height="96"
+        alt="jimcostdev logo"
+        class="relative z-10 mb-2 opacity-90 transition-transform duration-300 hover:scale-105 hover:opacity-100"
+      />
+      </div>
 
     <!-- Frase motivacional -->
-    <blockquote class="text-base italic text-gray-700 px-4 max-w-lg">
+    <blockquote class="text-base italic text-gray-700 px-4 max-w-lg my-4">
       "Ponte un blanco alto y haz fervientes esfuerzos por alcanzarlo y no te desanimes" <span class="font-semibold">EGW</span>
     </blockquote>
 
@@ -44,7 +53,7 @@ import MailIcon from './icons/Mail.astro';
 
     <!-- Derechos -->
     <p class="text-sm text-gray-600">
-      Hecho con 💙 - © <span class="font-semibold">Ronaldo Jiménez <span id="currentYear"></span></span>
+      Hecho con 💙 - © <span class="font-semibold">Ronaldo Jiménez <span id="currentYear" class="font-semibold bg-gradient-to-r from-sky-400 to-sky-600 bg-clip-text text-transparent"></span></span>
     </p>
   </div>
 </footer>
