@@ -1,64 +1,59 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import LinkButton from "../components/LinkButton.astro";
+import Layout from "@layouts/Layout.astro";
 
-const title = "Página no encontrada";
 const description = "Lo sentimos, no podemos encontrar la página que estás buscando.";
-const suggestion = "Regresar a la página principal";
+const suggestion = "¿Quieres regresar a la página principal?";
 ---
 
-<Layout title="404 - Página no encontrada">
-    <section class="relative min-h-screen w-full overflow-hidden bg-sky-950">
-        <!-- Estrellas animadas -->
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwMCIgaGVpZ2h0PSIyMDAwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmYiPjxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswOzEiIGR1cj0iNXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+PC9yZWN0Pjwvc3ZnPg==')] opacity-10 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_75%)]"></div>
-
-        <!-- Contenido principal -->
-        <div class="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4 py-16">
-
-            <!-- Texto del error -->
-            <h1 class="text-8xl md:text-9xl font-black bg-gradient-to-r from-sky-400 to-sky-600 bg-clip-text text-transparent mb-6">
-                404
-            </h1>
-            
-            <div class="space-y-6 max-w-2xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-sky-50">{title}</h2>
-                <p class="text-lg md:text-xl text-sky-200/80 leading-relaxed">
-                    {description}<br>
-                    <span class="inline-block mt-2 text-sky-400">¿Quizás un error de navegación interestelar?</span>
+<Layout title="Página no encontrada">
+    <section class="bg-sky-50 p-8 m-4">
+        <div
+            class="container min-h-screen px-6 py-12 mx-auto lg:flex lg:items-center lg:gap-12"
+        >
+            <div class="wf-ull lg:w-1/2">
+                <p class="text-sm font-medium text-blue-500">
+                    404 error
                 </p>
-                
-                <!-- Botón principal -->
-                <div class="mt-8">
-                    <LinkButton 
-                        href="/" 
-                        target="_self"
-                        class="group inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-700 text-sky-50 px-8 py-4 rounded-full transition-all transform hover:scale-105 shadow-lg shadow-sky-400/20"
+                <h1
+                    class="mt-3 text-2xl font-semibold text-gray-800  md:text-3xl"
+                >
+                    {description}
+                </h1>
+                <p class="mt-4 text-gray-500 ">
+                    {suggestion}
+                </p>
+
+                <div class="flex items-center mt-6 gap-x-3">
+                    <a
+                        href="/"
+                        class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto  hover:bg-gray-100"
                     >
-                        <span>{suggestion}</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-5 h-5 rtl:rotate-180"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+                            ></path>
                         </svg>
-                    </LinkButton>
-                </div>
-
-                <!-- Enlace secundario -->
-                <p class="mt-6 text-sky-300/80">
-                    O explora mis 
-                    <a href="https://github.com/JimcostDev" class="text-sky-400 hover:text-sky-300 border-b border-dashed border-sky-400/50 hover:border-solid transition-all">
-                        proyectos destacados
+                        <span>Regresar</span>
                     </a>
-                </p>
+                </div>
+            </div>
+
+            <div class="relative w-full mt-12 lg:w-1/2 lg:mt-0">
+                <img
+                    class="w-full max-w-lg lg:mx-auto"
+                    src="/404.svg"
+                    alt="imagen 404"
+                />
             </div>
         </div>
     </section>
 </Layout>
-
-<style is:global>
-    @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
-    }
-    .animate-float {
-        animation: float 6s ease-in-out infinite;
-    }
-</style>

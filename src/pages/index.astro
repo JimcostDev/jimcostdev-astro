@@ -1,19 +1,18 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import Principal from '@components/Principal.astro'
-import Skills from '@components/Skills.astro'
-import Experience from '@components/Experience.astro'
-import Projects from '@components/Projects.astro'
+import MainAbout from '@components/about/Main.astro'
+import Skills from '@components/skills/Skills.astro'
+import Experience from '@components/experience/Experience.astro'
+import Projects from '@components/projects/Projects.astro'
 import About from '@components/about/About.astro'
 import SectionContainer from '@components/SectionContainer.astro'
-import Education from '@components/Education.astro'
+import Education from '@components/education/Education.astro'
 import Title from "@components/TitleSection.astro"
-
 ---
 
 <Layout title="Ronaldo Jiménez">
 	<SectionContainer id="principal">
-		<Principal/>
+		<MainAbout/>
 	</SectionContainer>
 	
 	<SectionContainer id="experiencia">

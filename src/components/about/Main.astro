@@ -1,23 +1,23 @@
 ---
-import SocialButton from './SocialButton.astro';
-import MailIcon from '../components/icons/Mail.astro';
-import YoutubeIcon from '../components/icons/YouTube.astro';
-import GitHubIcon from './icons/GitHub.astro';
-import LinkedInIcon from './icons/LinkedIn.astro';
-import DocumentIcon from './icons/Doc.astro';
+import SocialButton from '@components/SocialButton.astro';
+import MailIcon from '@components/icons/Mail.astro';
+import YoutubeIcon from '@components/icons/YouTube.astro';
+import GitHubIcon from '@components/icons/GitHub.astro';
+import LinkedInIcon from '@components/icons/LinkedIn.astro';
+import DocumentIcon from '@components/icons/Doc.astro';
 ---
 
-<div id="presentacion" class="pt-9 md:pt-18 px-4 relative max-w-screen-lg mx-auto">
+<section class="pt-9 md:pt-18 px-4 mt-6 relative max-w-screen-lg mx-auto">
   <div class="flex flex-col items-center">
     <!-- Profile Image -->
     <div class="mb-8 relative group">
       <div
-        class="absolute -inset-1 bg-gradient-to-r from-sky-400 to-blue-400 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"
+        class="absolute -inset-1 bg-gradient-to-r from-sky-300 to-blue-400 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"
       >
       </div>
       <img
         src="/dev.webp"
-        class="w-64 h-64 md:w-72 md:h-72 object-cover rounded-full shadow-xl ring-4 ring-white transition-transform duration-300 hover:scale-105"
+        class="w-64 h-64 md:w-72 md:h-72 object-cover rounded-full shadow-xl ring-2 ring-sky-50 transition-transform duration-300 hover:scale-105"
         alt="Ronaldo Jiménez"
       />
     </div>
@@ -63,4 +63,4 @@ import DocumentIcon from './icons/Doc.astro';
     <!-- Divider -->
     <div class="border-t border-gray-300/50 w-full md:w-3/4 my-4"></div>
   </div>
-</div>
+</section>

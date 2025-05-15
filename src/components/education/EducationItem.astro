@@ -6,8 +6,8 @@ interface Props {
   date: string;
   link?: string;
 }
-import LinkButton from './LinkButton.astro';
-import Link from './icons/Link.astro';
+import LinkButton from '@components/LinkButton.astro';
+import Link from '@components/icons/Link.astro';
 
 const { type, title, institution, date, link } = Astro.props;
 const dotColor = type === 'grado' ? 'bg-yellow-300' : 'bg-green-300';

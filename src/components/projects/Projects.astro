@@ -1,7 +1,7 @@
 ---
-import Link from "./icons/Link.astro";
-import LinkButton from "./LinkButton.astro";
-import { cargarDatos } from "../api/loadData.js";
+import Link from "@components/icons/Link.astro";
+import LinkButton from "@components/LinkButton.astro";
+import { cargarDatos } from "@api/loadData.js";
 
 // Carga de información de proyectos
 const projectData = await cargarDatos("project");
