@@ -1,32 +1,32 @@
 ---
-import Link from "@components/icons/Link.astro";
-import LinkButton from "@components/LinkButton.astro";
-import { cargarDatos } from "@api/loadData.js";
+import Link from '@components/icons/Link.astro';
+import LinkButton from '@components/LinkButton.astro';
+import { cargarDatos } from '@api/loadData';
+import type { Project } from '../../types/Project';
 
 // Carga de información de proyectos
-const projectData = await cargarDatos("project");
-const getProjects = Array.isArray(projectData) ? projectData : [projectData];
+const getProjects: Project[] = (await cargarDatos<Project[]>('project')) ?? [];
 ---
 
 <div class="flex flex-col gap-y-16 p-8">
-  {getProjects.map(({ image, title, description, stack, link }) => (
+  {getProjects.map(project => (
     <article class="flex flex-col md:flex-row md:space-x-8 group relative">
       {/* Imagen del proyecto */}
       <div class="w-full md:w-1/2">
-        <div class="relative flex flex-col items-center transition duration-500 ease-in-out transform shadow-xl overflow-hidden rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-200 lg:hover:border-gray-300 lg:hover:bg-gray-400/50 mb-3">
+        <div class="relative flex flex-col items-center transition duration-500 ease-in-out transform shadow-xl overflow-hidden rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl mb-3">
           <img
-            alt={title}
+            alt={project.title}
             class="w-full h-auto sm:h-56 object-cover object-center transition-transform duration-500 ease-in-out md:h-full md:group-hover:scale-105"
             loading="lazy"
-            src={image}
+            src={project.image}
           />
         </div>
       </div>
 
       {/* Botón flotante */}
-      {link && (
+      {project.link && (
         <div class="absolute top-0 right-0 m-4">
-          <LinkButton href={link}>
+          <LinkButton href={project.link}>
             <Link class="size-3 md:size-4" />
           </LinkButton>
         </div>
@@ -35,9 +35,9 @@ const getProjects = Array.isArray(projectData) ? projectData : [projectData];
       {/* Contenido del proyecto */}
       <div class="w-full md:w-1/2 md:max-w-lg flex flex-col justify-between">
         <div>
-          <h3 class="text-xl font-semibold text-gray-800 mt-2">{title}</h3>
+          <h3 class="text-xl font-semibold text-gray-800 mt-2">{project.title}</h3>
           <ul class="flex flex-wrap mt-2 gap-2">
-            {stack.map((tech: string) => (
+            {project.stack.map(tech => (
               <li>
                 <span class="flex items-center rounded-full text-xs bg-sky-200/60 text-gray-800 py-1 px-2">
                   # {tech}
@@ -45,7 +45,7 @@ const getProjects = Array.isArray(projectData) ? projectData : [projectData];
               </li>
             ))}
           </ul>
-          <p class="mt-2 text-gray-500">{description}</p>
+          <p class="mt-2 text-gray-500">{project.description}</p>
         </div>
       </div>
     </article>

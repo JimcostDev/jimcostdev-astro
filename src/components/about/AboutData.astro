@@ -1,0 +1,36 @@
+---
+import { cargarDatos } from '@api/loadData';
+import type { Profile, Contact, AboutProfile } from '../../types/About';
+import CardAbout from './CardAbout.astro';
+
+// 1) Perfil — objeto único
+const perfilRaw = await cargarDatos<Profile>('perfil');
+// Lo convertimos en array (o queda vacío si es null)
+const profileData: Profile[] = perfilRaw ? [perfilRaw] : [];
+
+// 2) Contacto — idem
+const contactoRaw = await cargarDatos<Contact>('contact');
+const contactData: Contact[] = contactoRaw ? [contactoRaw] : [];
+
+// 3) Total años de experiencia sigue siendo un número
+const totalYears = (await cargarDatos<number>('work_experience/total_years')) ?? 0;
+
+// 4) Ahora sí profileData es un array y podemos mapear
+const aboutItems: AboutProfile[] = profileData.map(profile => {
+  const contact = contactData.find(c => c.id === profile.id);
+  return {
+    ...profile,
+    totalYears,
+    nationality: contact?.nationality ?? 'N/A',
+    iLiveIn:   contact?.i_live_in ?? 'N/A',
+  };
+});
+---
+{aboutItems.map(item => (
+  <CardAbout
+    description={item.description}
+    totalYears={item.totalYears}
+    nationality={item.nationality}
+    iLiveIn={item.iLiveIn}
+  />
+))}

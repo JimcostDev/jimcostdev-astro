@@ -1,19 +1,16 @@
 ---
-import { cargarDatos } from "@api/loadData.js";
-import ExperienceItem from "./ExperienceItem.astro"
+import { cargarDatos } from '@api/loadData';
+import type { Experience } from '../../types/Experience';
+import ExperienceItem from './ExperienceItem.astro';
 
-// info de experiencia
-const experienceData = await cargarDatos("work_experience");
-const getExperience = Array.isArray(experienceData) ? experienceData : [experienceData];
+// Carga de experiencia laboral
+const getExperience: Experience[] = (await cargarDatos<Experience[]>('work_experience')) ?? [];
 ---
-    <ol class="relative mt-8">
-    
-        {
-            getExperience.map((experiencie) =>(
-                <li class="">
-                    <ExperienceItem {...experiencie} />
-                </li>
-            ))
-        }
-    </ol>
 
+<ol class="relative mt-8">
+  {getExperience.map(exp => (
+    <li>
+      <ExperienceItem {...exp} />
+    </li>
+  ))}
+</ol>

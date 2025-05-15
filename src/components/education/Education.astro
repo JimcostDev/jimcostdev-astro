@@ -1,13 +1,12 @@
 ---
-import { cargarDatos } from "@api/loadData.js";
+import { cargarDatos } from '@api/loadData';
+import type { Grade, Certification } from '../../types/Education';
 import EducationItem from './EducationItem.astro';
 
-// info de estudios
-const gradesData = await cargarDatos("education");
-const getGrades = Array.isArray(gradesData) ? gradesData : [];
-
-const certificationsData = await cargarDatos("certification");
-const getCertifications = Array.isArray(certificationsData) ? certificationsData : [];
+// Datos de grados académicos
+const getGrades: Grade[] = (await cargarDatos<Grade[]>('education')) ?? [];
+// Datos de certificaciones
+const getCertifications: Certification[] = (await cargarDatos<Certification[]>('certification')) ?? [];
 ---
 
 <div class="flex justify-center mb-5">
@@ -26,7 +25,7 @@ const getCertifications = Array.isArray(certificationsData) ? certificationsData
 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-48">
   <div>
     <ol class="relative border-l-2 border-gray-300 ml-6">
-      {getGrades.map(({ career, company, year }) => (
+      {getGrades.map(({ id, career, company, year }) => (
         <EducationItem 
           type="grado" 
           title={career} 
@@ -39,7 +38,7 @@ const getCertifications = Array.isArray(certificationsData) ? certificationsData
 
   <div>
     <ol class="relative border-l-2 border-gray-300 ml-6">
-      {getCertifications.map(({ certification, company, link }) => (
+      {getCertifications.map(({ id, certification, company, link }) => (
         <EducationItem 
           type="certificación" 
           title={certification} 
