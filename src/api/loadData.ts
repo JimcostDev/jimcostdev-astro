@@ -1,9 +1,7 @@
-// src/api/loadData.ts
 export async function cargarDatos<T>(
   endpoint: string,
   suffix?: string
 ): Promise<T | null> {
-  // user "hardcodeado" (puedes extraerlo luego a una constante o variable de entorno)
   const user = 'jimcostdev';
 
   // URL de producción (Koyeb)
