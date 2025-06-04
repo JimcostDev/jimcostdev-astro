@@ -2,7 +2,7 @@
  * Elemento de experiencia laboral
  */
 export interface Experience {
-  id: number;
+  id: number | string;
   rol: string;
   company: string;
   location: string;

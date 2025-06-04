@@ -6,7 +6,7 @@ import EducationItem from './EducationItem.astro';
 // Datos de grados académicos
 const getGrades: Grade[] = (await cargarDatos<Grade[]>('education')) ?? [];
 // Datos de certificaciones
-const getCertifications: Certification[] = (await cargarDatos<Certification[]>('certification')) ?? [];
+const getCertifications: Certification[] = (await cargarDatos<Certification[]>('certifications')) ?? [];
 ---
 
 <div class="flex justify-center mb-5">

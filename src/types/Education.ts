@@ -2,7 +2,7 @@
  * Elemento de educación (grado académico)
  */
 export interface Grade {
-  id: number;
+  id: number | string;
   company: string;
   career: string;
   year: number;
@@ -12,7 +12,7 @@ export interface Grade {
  * Elemento de certificación
  */
 export interface Certification {
-  id: number;
+  id: number | string;
   company: string;
   certification: string;
   link: string;

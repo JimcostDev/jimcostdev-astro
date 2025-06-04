@@ -5,7 +5,7 @@ import { cargarDatos } from '@api/loadData';
 import type { Project } from '../../types/Project';
 
 // Carga de información de proyectos
-const getProjects: Project[] = (await cargarDatos<Project[]>('project')) ?? [];
+const getProjects: Project[] = (await cargarDatos<Project[]>('projects')) ?? [];
 ---
 
 <div class="flex flex-col gap-y-16 p-8">

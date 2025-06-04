@@ -2,7 +2,7 @@
  * Elemento de un proyecto
  */
 export interface Project {
-  id: number;
+  id: number | string;
   image: string;
   title: string;
   description: string;

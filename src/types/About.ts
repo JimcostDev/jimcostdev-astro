@@ -1,7 +1,7 @@
 
 /** Datos de perfil obtenidos del endpoint "/perfil" */
 export interface Profile {
-  id: number;
+  id: number | string;
   rol: string;
   description: string;
   skills: string[];
@@ -11,7 +11,7 @@ export interface Profile {
 
 /** Información de contacto obtenida del endpoint "/contact" */
 export interface Contact {
-  id: number;
+  id: number | string;
   nationality: string;
   i_live_in: string;
 }
