@@ -14,6 +14,8 @@ export interface Contact {
   id: number | string;
   nationality: string;
   i_live_in: string;
+  email: string;
+  phone_number: string;
 }
 
 /**

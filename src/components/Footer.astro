@@ -1,17 +1,17 @@
 ---
-import SocialButton from './SocialButton.astro';
-import LinkedInIcon from './icons/LinkedIn.astro';
-import GitHubIcon from './icons/GitHub.astro';
-import YoutubeIcon from './icons/YouTube.astro';
-import MailIcon from './icons/Mail.astro';
+import SocialNetworks from "@components/SocialNetworks.astro";
 ---
 
-<footer class="bg-sky-50 text-sky-950 py-8">
-  <div class="max-w-3xl mx-auto flex flex-col items-center text-center mb-12 md:mb-4">
-    
+<footer
+  class="text-center mb-12 md:mb-4 bg-sky-50 text-sky-950 py-8 max-w-screen-lg mx-auto"
+>
+  <div class="flex flex-col items-center">
     <!-- Logo con efecto de gradiente -->
-	  <div class="group relative">
-      <div class="absolute -inset-1 bg-gradient-to-r from-sky-400 to-sky-600 rounded-full blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
+    <div class="group relative">
+      <div
+        class="absolute -inset-1 bg-gradient-to-r from-sky-400 to-sky-600 rounded-full blur opacity-20 group-hover:opacity-30 transition duration-500"
+      >
+      </div>
       <img
         src="/logo.svg"
         width="96"
@@ -19,48 +19,35 @@ import MailIcon from './icons/Mail.astro';
         alt="jimcostdev logo"
         class="relative z-10 mb-2 opacity-90 transition-transform duration-300 hover:scale-105 hover:opacity-100"
       />
-      </div>
+    </div>
 
     <!-- Frase motivacional -->
     <blockquote class="text-base italic text-gray-700 px-4 max-w-lg my-4">
-      "Ponte un blanco alto y haz fervientes esfuerzos por alcanzarlo y no te desanimes" <span class="font-semibold">EGW</span>
+      "Ponte un blanco alto y haz fervientes esfuerzos por alcanzarlo y no te
+      desanimes" <span class="font-semibold">EGW</span>
     </blockquote>
 
-    <!-- Divider -->
-    <div class="border-t border-gray-300/50 w-3/4 my-4"></div>
-
-    <!-- Redes sociales -->
-    <div class="flex flex-wrap justify-center gap-3">
-      <SocialButton href="https://www.linkedin.com/in/ronaldo-jimenez" bgColor="hover:bg-blue-300/10" borderColor="border-blue-300">
-        <LinkedInIcon class="size-5 md:size-6 transition-transform hover:scale-105 duration-300"/>
-      </SocialButton>
-
-      <SocialButton href="https://github.com/JimcostDev" bgColor="hover:bg-gray-400/10" borderColor="border-gray-400">
-        <GitHubIcon class="size-5 md:size-6 transition-transform hover:scale-105 duration-300"/> 
-      </SocialButton>
-
-      <SocialButton href="https://www.youtube.com/@jimcostdev?sub_confirmation=1" bgColor="hover:bg-red-300/10" borderColor="border-red-300">
-        <YoutubeIcon class="size-5 md:size-6 transition-transform hover:scale-105 duration-300"/> 
-      </SocialButton>
-
-      <SocialButton href="mailto:jimcostdev@gmail.com" bgColor="hover:bg-yellow-300/10" borderColor="border-yellow-400">
-        <MailIcon class="size-5 md:size-6 transition-transform hover:scale-105 duration-300"/>
-      </SocialButton>
+    <div class="flex flex-col items-center mt-4">
+      <!-- Redes sociales -->
+      <SocialNetworks cvUrl="https://cv.jimcostdev.com"/>
     </div>
-
-    <!-- Divider -->
-    <div class="border-t border-gray-300/50 w-3/4 my-4"></div>
 
     <!-- Derechos -->
     <p class="text-sm text-gray-600">
-      Hecho con 💙 - © <span class="font-semibold">Ronaldo Jiménez <span id="currentYear" class="font-semibold bg-gradient-to-r from-sky-400 to-sky-600 bg-clip-text text-transparent"></span></span>
+      Hecho con 💙 - © <span class="font-semibold"
+        >Ronaldo Jiménez <span
+          id="currentYear"
+          class="font-semibold bg-gradient-to-r from-sky-400 to-sky-600 bg-clip-text text-transparent"
+        ></span></span
+      >
     </p>
   </div>
 </footer>
+
 <script>
   // Obtener el elemento donde mostrar el año
-  const yearElement = document.getElementById('currentYear');
-  
+  const yearElement = document.getElementById("currentYear");
+
   // Actualizar con el año actual del cliente
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear().toString();

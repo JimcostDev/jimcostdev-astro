@@ -1,0 +1,80 @@
+---
+// src/components/SocialNetworks.astro
+import SocialButton from '@components/SocialButton.astro';
+import LinkedInIcon  from '@components/icons/LinkedIn.astro';
+import GitHubIcon    from '@components/icons/GitHub.astro';
+import YoutubeIcon   from '@components/icons/YouTube.astro';
+import MailIcon      from '@components/icons/Mail.astro';
+import DocumentIcon  from '@components/icons/Doc.astro';
+
+import { cargarDatos } from '@api/loadData';
+import type { SocialNetwork } from '../types/SocialNetwork';
+import type { Contact } from '../types/About';
+
+// Props: className opcional, overrideCV para URL alternativa de "web"
+const {
+  className = 'flex flex-wrap justify-center gap-2 md:gap-4',
+  cvUrl = ''
+} = Astro.props;
+
+// 1) Cargamos redes y contacto
+const networks: SocialNetwork[] = (await cargarDatos<SocialNetwork[]>('social_networks')) ?? [];
+const contactRaw         = await cargarDatos<Contact[]>('contact');
+const email              = contactRaw?.[0]?.email ?? '';
+
+// 2) Construimos items con override para web
+const mapped = networks.map(net => ({
+  ...net,
+  href: net.title.toLowerCase() === 'web' && cvUrl ? cvUrl : net.url
+}));
+
+// 3) Creamos el item de email
+const emailItem = { id: 'email', title: 'email', href: `mailto:${email}`, username: email };
+
+// 4) Insertamos email antes que la web
+const items = [
+  emailItem,
+  ...mapped.filter(net => net.title.toLowerCase() !== 'web'),
+  ...mapped.filter(net => net.title.toLowerCase() === 'web')
+];
+
+// 5) Configuración de iconos y estilos
+function getConfig(title: string) {
+  switch (title.toLowerCase()) {
+    case 'linkedin':
+      return { Icon: LinkedInIcon, bg: 'hover:bg-blue-300/10', bd: 'border-blue-300' };
+    case 'github':
+      return { Icon: GitHubIcon,   bg: 'hover:bg-gray-400/10', bd: 'border-gray-400' };
+    case 'youtube':
+      return { Icon: YoutubeIcon,  bg: 'hover:bg-red-300/10',  bd: 'border-red-300' };
+    case 'email':
+      return { Icon: MailIcon,     bg: 'hover:bg-yellow-300/10', bd: 'border-yellow-400', target: '_self', rel: '' };
+    default:
+      return { Icon: DocumentIcon, bg: 'hover:bg-green-300/10', bd: 'border-green-400' };
+  }
+}
+---
+
+<!-- Divider superior -->
+<div class="border-t border-gray-300/50 w-full my-4"></div>
+
+<div class={className}>
+  {items.map((net) => {
+    const { Icon, bg, bd, target, rel } = getConfig(net.title);
+    return (
+      <SocialButton
+        href={net.href}
+        bgColor={bg}
+        borderColor={bd}
+        target={target}
+        rel={rel}
+        key={net.id}
+      >
+        <Icon class="size-5 md:size-6 transition-transform hover:scale-105 duration-300" />
+      </SocialButton>
+    );
+  })}
+</div>
+
+<!-- Divider inferior -->
+<div class="border-t border-gray-300/50 w-full my-4"></div>
