@@ -1,37 +1,46 @@
 ---
-import PythonIcon from '@components/icons/Python.astro';
-import GoIcon from '@components/icons/Go.astro';
-import MongoDDIcon from '@components/icons/MongoDB.astro';
-import MSSQLIcon from '@components/icons/MSSQL.astro';
-import JSIcon from '@components/icons/JS.astro';
+// src/components/Skills.astro
 import Skill from './PillSkill.astro';
+import PythonIcon   from '@components/icons/Python.astro';
+import GoIcon       from '@components/icons/Go.astro';
+import MongoDBIcon  from '@components/icons/MongoDB.astro';
+import MSSQLIcon    from '@components/icons/MSSQL.astro';
+import JSIcon       from '@components/icons/JS.astro';
 import PostgresIcon from '@components/icons/Postgres.astro';
+import CodeIcon     from '@components/icons/Code.astro';
+
+import { cargarDatos } from '@api/loadData';
+import type { Profile } from '../../types/About';
+
+// Cargar perfil y skills
+const perfiles: Profile[] = (await cargarDatos<Profile[]>('profile')) ?? [];
+const skills: string[] = perfiles[0]?.skills ?? [];
+
+// Función para mapear nombre de skill a icono
+function getIcon(name: string) {
+  switch (name.toLowerCase()) {
+    case 'python': return PythonIcon;
+    case 'go':     return GoIcon;
+    case 'javascript':
+    case 'js':      return JSIcon;
+    case 'mongodb': return MongoDBIcon;
+    case 'postgresql':
+    case 'postgres':return PostgresIcon;
+    case 'sqlserver':
+    case 'mssql':   return MSSQLIcon;
+    default:        return CodeIcon;
+  }
+}
 ---
-    <div class="flex flex-wrap justify-around">
-        <Skill>
-            <PythonIcon class="size-6 md:size-10" slot="icon" />
-            <span slot="text">Python</span>
-        </Skill>
-        <Skill>
-            <GoIcon class="size-6 md:size-10" slot="icon" />
-            <span slot="text">Go</span>
-        </Skill>
-        <Skill>
-            <JSIcon class="size-6 md:size-10" slot="icon" />
-            <span slot="text">JavaScript</span>
-        </Skill>
-        <Skill>
-            <MongoDDIcon class="size-6 md:size-10" slot="icon" />
-            <span slot="text">MongoDB</span>
-        </Skill>
-        <Skill>
-            <PostgresIcon class="size-6 md:size-10" slot="icon" />
-            <span slot="text">PostgreSQL</span>
-        </Skill>
-        <Skill>
-            <MSSQLIcon class="size-6 md:size-10" slot="icon" />
-            <span slot="text">SQL Server</span>
-        </Skill>
-    </div>
 
-
+<div class="flex flex-wrap justify-around">
+  {skills.map((skill) => {
+    const Icon = getIcon(skill);
+    return (
+      <Skill key={skill}>
+        <Icon class="size-6 md:size-10" slot="icon" />
+        <span slot="text">{skill}</span>
+      </Skill>
+    );
+  })}
+</div>

@@ -1,5 +1,30 @@
 ---
 import SocialNetworks from "@components/SocialNetworks.astro";
+import { cargarDatos } from '@api/loadData';
+import type { User } from '../../types/User';
+import type { Profile } from '../../types/About';
+
+// Cargar los datos del usuario (nombre)
+const user = await cargarDatos<User>('users') ?? {
+  id: '',
+  full_name: 'Nombre desconocido',
+  username: '',
+  email: '',
+  roles: [],
+};
+const fullName = user.full_name;
+
+// cargar el rol (cargo) del perfil
+const profiles = await cargarDatos<Profile[]>('profile') ?? [];
+const profile: Profile = profiles[0] ?? {
+  id: '',
+  rol: 'Sin rol',
+  description: '',
+  skills: [],
+  username: '',
+  avatar: '',
+};
+const role = profile.rol;
 ---
 
 <section class="pt-9 md:pt-18 px-4 mt-6 relative max-w-screen-lg mx-auto">
@@ -8,33 +33,36 @@ import SocialNetworks from "@components/SocialNetworks.astro";
     <div class="mb-8 relative group">
       <div
         class="absolute -inset-1 bg-gradient-to-r from-sky-300 to-blue-400 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"
-      >
-      </div>
+      />
       <img
         src="/dev.webp"
+        alt={fullName}
         class="w-64 h-64 md:w-72 md:h-72 object-cover rounded-full shadow-xl ring-2 ring-sky-50 transition-transform duration-300 hover:scale-105"
-        alt="Ronaldo Jiménez"
       />
     </div>
 
+    <!-- Nombre dinámico -->
     <h1 class="text-2xl md:text-4xl font-bold text-center px-4">
-      Hola, soy <span
+      Hola, soy&nbsp;
+      <span
         class="bg-gradient-to-r from-sky-400 to-sky-600 bg-clip-text text-transparent"
-        >Ronaldo Jiménez</span
       >
+        {fullName}
+      </span>
     </h1>
 
     <div class="flex flex-col items-center mt-4">
       <div class="flex items-center gap-2 mb-2">
         <span class="text-sky-600">●</span>
+        <!-- Rol dinámico -->
         <h3 class="text-xl md:text-2xl font-medium text-gray-700">
-          Software Engineer
+          {role}
         </h3>
         <span class="text-sky-400">●</span>
       </div>
 
       <!-- Redes sociales -->
-      <SocialNetworks cvUrl="https://cv.jimcostdev.com"/>
+      <SocialNetworks cvUrl="https://cv.jimcostdev.com" />
     </div>
   </div>
 </section>
