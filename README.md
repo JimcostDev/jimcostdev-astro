@@ -1,30 +1,74 @@
-# ✨ JimcostDev
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+# 🌟 JimcostDev – Portafolio Personal
 
-Este es mi portafolio personal creado con [Astro](https://astro.build/) y [Tailwind CSS](https://tailwindcss.com/). Aquí encontrarás información sobre mis proyectos, habilidades y experiencia.
+Bienvenido a mi portafolio personal, desarrollado con **Astro** y **Tailwind CSS**. Aquí podrás conocer más sobre mis proyectos, habilidades y experiencia profesional.
 
-### Clonar el repositorio
+🔗 [Visita el sitio en vivo](https://jimcostdev.com)
 
-```bash
-git clone https://github.com/JimcostDev/jimcostdev-astro.git
-```
+---
 
-## 🧞 Comandos
+## 📌 Descripción
 
-Todos los comandos se ejecutan desde la raíz del proyecto, desde una terminal:
+Este sitio web está diseñado para mostrar mi trayectoria profesional, incluyendo:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Instala las dependencias                         |
-| `npm run dev`             | Inicia el servidor de desarrollo en `localhost:4321` |
-| `npm run build`           | Construye el sitio de producción en `./dist/`          |
-| `npm run preview`         | Previsualiza tu construcción localmente, antes de desplegar     |
-| `npm run astro ...`       | Ejecuta comandos CLI como `astro add`, `astro check` |
-| `npm run astro -- --help` | Obtén ayuda sobre cómo usar el CLI de Astro      |
+- 🧑‍💻 Proyectos destacados
+- 🧠 Habilidades técnicas
+- 🎓 Formación académica
+- 📍 Información de contacto
 
-## 👀 ¿Quieres aprender más?
+El diseño es completamente responsivo y optimizado para una carga rápida, aprovechando las ventajas de Astro y Tailwind CSS.
 
-No dudes en consultar la [documentación](https://docs.astro.build) o unirte al servidor de [Discord](https://astro.build/chat).
+---
+
+## 🚀 Tecnologías
+
+- **Astro**: Framework moderno para la creación de sitios web rápidos y optimizados.
+- **Tailwind CSS**: Framework de utilidades para un diseño ágil y personalizable.
+- **TypeScript**: Lenguaje de programación para una mayor seguridad y escalabilidad.
+
+---
+
+## 🧪 Instalación
+
+Para ejecutar este proyecto localmente, sigue estos pasos:
+
+1. Clona el repositorio:
+
+   ```bash
+   git clone https://github.com/JimcostDev/jimcostdev-astro.git
+   cd jimcostdev-astro
+   ```
+
+2. Instala las dependencias:
+
+   ```bash
+   npm install
+   ```
+
+3. Inicia el servidor de desarrollo:
+
+   ```bash
+   npm run dev
+   ```
+
+   El sitio estará disponible en `http://localhost:4321`.
+
+---
+
+## 📦 Scripts disponibles
+
+- `dev`: Inicia el servidor de desarrollo.
+- `build`: Genera una versión optimizada para producción.
+- `preview`: Muestra la versión de producción localmente.
+
+---
+
+## 📝 Licencia
+
+Este proyecto está bajo la licencia [MIT](LICENSE).
+
+---
+
+## 📬 Contacto
+
+Para más información o consultas, visita mi sitio web oficial: [jimcostdev.com](https://jimcostdev.com)
