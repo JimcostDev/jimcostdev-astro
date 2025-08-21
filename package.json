@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "jimcostdev-astro",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -17,8 +17,5 @@
     "astro": "^5.13.2",
     "tailwindcss": "^4.1.1",
     "typescript": "^5.5.3"
-  },
-  "overrides": {
-    "path-to-regexp": "^6.2.3"
   }
 }
