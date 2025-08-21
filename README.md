@@ -3,7 +3,7 @@
 
 Bienvenido a mi portafolio personal, desarrollado con **Astro** y **Tailwind CSS**. Aquí podrás conocer más sobre mis proyectos, habilidades y experiencia profesional.
 
-🔗 [Visita el sitio en vivo](https://jimcostdev.com)
+🔗 [Míralo ve](https://jimcostdev.com)
 
 ---
 
