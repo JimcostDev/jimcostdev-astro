@@ -8,6 +8,9 @@ import MSSQLIcon    from '@components/icons/MSSQL.astro';
 import JSIcon       from '@components/icons/JS.astro';
 import PostgresIcon from '@components/icons/Postgres.astro';
 import CodeIcon     from '@components/icons/Code.astro';
+import AstroIcon    from '@components/icons/Ast.astro';
+import TailwindIcon from '@components/icons/Tailwind.astro';
+import GitIcon      from '@components/icons/Git.astro';
 
 import { cargarDatos } from '@api/loadData';
 import type { Profile } from '../../types/About';
@@ -28,6 +31,9 @@ function getIcon(name: string) {
     case 'postgres':return PostgresIcon;
     case 'sqlserver':
     case 'mssql':   return MSSQLIcon;
+    case 'astro':   return AstroIcon;
+    case 'tailwind': return TailwindIcon;
+    case 'git':     return GitIcon;
     default:        return CodeIcon;
   }
 }

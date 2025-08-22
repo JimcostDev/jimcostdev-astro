@@ -1,30 +1,62 @@
 ---
 import SocialNetworks from "@components/SocialNetworks.astro";
-import { cargarDatos } from '@api/loadData';
-import type { User } from '../../types/User';
-import type { Profile } from '../../types/About';
+import { cargarDatos } from "@api/loadData";
+import type { User } from "../../types/User";
+import type { Profile } from "../../types/About";
+import type { SocialNetwork } from "../../types/SocialNetwork";
+import DociIcon from "@components/icons/Doc.astro";
 
-// Cargar los datos del usuario (nombre)
-const user = await cargarDatos<User>('users') ?? {
-  id: '',
-  full_name: 'Nombre desconocido',
-  username: '',
-  email: '',
+// Cargar datos básicos
+const user = (await cargarDatos<User>("users")) ?? {
+  id: "",
+  full_name: "Nombre desconocido",
+  username: "",
+  email: "",
   roles: [],
 };
 const fullName = user.full_name;
 
-// cargar el rol (cargo) del perfil
-const profiles = await cargarDatos<Profile[]>('profile') ?? [];
+const profiles = (await cargarDatos<Profile[]>("profile")) ?? [];
 const profile: Profile = profiles[0] ?? {
-  id: '',
-  rol: 'Sin rol',
-  description: '',
+  id: "",
+  rol: "Sin rol",
+  description: "",
   skills: [],
-  username: '',
-  avatar: '',
+  username: "",
+  avatar: "",
 };
 const role = profile.rol;
+
+// Cargar redes
+const networks: SocialNetwork[] =
+  (await cargarDatos<SocialNetwork[]>("social_networks")) ?? [];
+
+// Buscar SOLO la entrada CV (title === 'cv')
+const cvEntry = networks.find(n => n?.title?.toLowerCase() === "cv" && n.url);
+
+// Normalizar URL (añade https:// si falta)
+function normalizeUrl(u?: string) {
+  if (!u) return "";
+  if (u.startsWith("http://") || u.startsWith("https://") || u.startsWith("/")) return u;
+  return `https://${u}`;
+}
+
+const cvHref = cvEntry?.url ? normalizeUrl(cvEntry.url) : null;
+
+// Host del CV para ocultar su icono en SocialNetworks (sin tocar el componente)
+function getHost(u?: string) {
+  try {
+    if (!u) return "";
+    return new URL(normalizeUrl(u)).host; // p.ej. "micv.com" o "cv.jimcostdev.com"
+  } catch {
+    return "";
+  }
+}
+const cvHost = getHost(cvEntry?.url);
+
+const openInNewTab = true;
+const rel = "noopener noreferrer";
+const ariaLabel = "Abrir CV";
 ---
 
 <section class="pt-9 md:pt-18 px-4 mt-6 relative max-w-screen-lg mx-auto">
@@ -41,12 +73,24 @@ const role = profile.rol;
       />
     </div>
 
+    <!-- BOTÓN CV: solo si existe la entrada 'cv' -->
+    {cvHref ? (
+      <a
+        href={cvHref}
+        target={openInNewTab ? "_blank" : undefined}
+        rel={rel}
+        aria-label={ariaLabel}
+        class="mb-4 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-300 text-sm font-medium text-sky-600 transition hover:bg-green-300/10 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-sky-300"
+      >
+        <DociIcon class="w-5 h-5" />
+        <span>Ver / Descargar CV</span>
+      </a>
+    ) : null}
+
     <!-- Nombre dinámico -->
     <h1 class="text-2xl md:text-4xl font-bold text-center px-4">
       Hola, soy&nbsp;
-      <span
-        class="bg-gradient-to-r from-sky-400 to-sky-600 bg-clip-text text-transparent"
-      >
+      <span class="bg-gradient-to-r from-sky-400 to-sky-600 bg-clip-text text-transparent">
         {fullName}
       </span>
     </h1>
@@ -54,15 +98,24 @@ const role = profile.rol;
     <div class="flex flex-col items-center mt-4">
       <div class="flex items-center gap-2 mb-2">
         <span class="text-sky-600">●</span>
-        <!-- Rol dinámico -->
         <h3 class="text-xl md:text-2xl font-medium text-gray-700">
           {role}
         </h3>
         <span class="text-sky-400">●</span>
       </div>
 
-      <!-- Redes sociales -->
-      <SocialNetworks cvUrl="https://cv.jimcostdev.com" />
+      <!-- Social networks SIN tocar 'web' -->
+      <SocialNetworks />
+
+      <!-- Ocultar SOLO la red cuyo href apunte al host del CV -->
+      {cvHost ? (
+        <style>
+          {`
+/* Oculta cualquier enlace de SocialNetworks que apunte al mismo host del CV */
+a[href*="${cvHost}"] { display: none !important; }
+          `}
+        </style>
+      ) : null}
     </div>
   </div>
 </section>

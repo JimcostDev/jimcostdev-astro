@@ -1,32 +1,33 @@
 ---
-// src/components/SocialNetworks.astro
 import SocialButton from '@components/SocialButton.astro';
 import LinkedInIcon  from '@components/icons/LinkedIn.astro';
 import GitHubIcon    from '@components/icons/GitHub.astro';
 import YoutubeIcon   from '@components/icons/YouTube.astro';
 import MailIcon      from '@components/icons/Mail.astro';
-import DocumentIcon  from '@components/icons/Doc.astro';
+import DefaultSNIcon from '@components/icons/DefaultSN.astro';
+import PlatziIcon    from '@components/icons/Platzi.astro';
 
 import { cargarDatos } from '@api/loadData';
 import type { SocialNetwork } from '../types/SocialNetwork';
 import type { Contact } from '../types/About';
 
-// Props: className opcional, overrideCV para URL alternativa de "web"
+// Props: className opcional
 const {
-  className = 'flex flex-wrap justify-center gap-2 md:gap-4',
-  cvUrl = ''
+  className = 'flex flex-wrap justify-center gap-2 md:gap-4'
 } = Astro.props;
 
 // 1) Cargamos redes y contacto
 const networks: SocialNetwork[] = (await cargarDatos<SocialNetwork[]>('social_networks')) ?? [];
-const contactRaw         = await cargarDatos<Contact[]>('contact');
-const email              = contactRaw?.[0]?.email ?? '';
+const contactRaw = await cargarDatos<Contact[]>('contact');
+const email      = contactRaw?.[0]?.email ?? '';
 
-// 2) Construimos items con override para web
-const mapped = networks.map(net => ({
-  ...net,
-  href: net.title.toLowerCase() === 'web' && cvUrl ? cvUrl : net.url
-}));
+// 2) Construimos items filtrando "cv"
+const mapped = networks
+  .filter(net => net.title.toLowerCase() !== 'cv')
+  .map(net => ({
+    ...net,
+    href: net.url
+  }));
 
 // 3) Creamos el item de email
 const emailItem = { id: 'email', title: 'email', href: `mailto:${email}`, username: email };
@@ -44,13 +45,15 @@ function getConfig(title: string) {
     case 'linkedin':
       return { Icon: LinkedInIcon, bg: 'hover:bg-blue-300/10', bd: 'border-blue-300' };
     case 'github':
-      return { Icon: GitHubIcon,   bg: 'hover:bg-gray-400/10', bd: 'border-gray-400' };
+      return { Icon: GitHubIcon,   bg: 'hover:bg-slate-400/10', bd: 'border-slate-500' };
     case 'youtube':
       return { Icon: YoutubeIcon,  bg: 'hover:bg-red-300/10',  bd: 'border-red-300' };
     case 'email':
       return { Icon: MailIcon,     bg: 'hover:bg-yellow-300/10', bd: 'border-yellow-400', target: '_self', rel: '' };
+    case 'platzi':
+      return { Icon: PlatziIcon,   bg: 'hover:bg-lime-300/10', bd: 'border-lime-400' };
     default:
-      return { Icon: DocumentIcon, bg: 'hover:bg-green-300/10', bd: 'border-green-400' };
+      return { Icon: DefaultSNIcon, bg: 'hover:bg-neutral-300/10', bd: 'border-neutral-400' };
   }
 }
 ---
