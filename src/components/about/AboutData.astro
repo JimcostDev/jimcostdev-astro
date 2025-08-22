@@ -21,7 +21,7 @@ const totalYears = (await cargarDatos<number>(
 
 // 4) Junto todo para pintar el componente
 const aboutItems: AboutProfile[] = profileData.map((profile) => {
-  const contact = contactData.find((c) => c.id === profile.id);
+  const contact = contactData.find((c) => c.username === profile.username);
   return {
     ...profile,
     totalYears,

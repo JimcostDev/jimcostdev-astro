@@ -6,7 +6,7 @@ export interface Profile {
   description: string;
   skills: string[];
   username: string;
-  avatar: string;
+  avatar: string;   
 }
 
 /** Información de contacto obtenida del endpoint "/contact" */
@@ -16,6 +16,7 @@ export interface Contact {
   i_live_in: string;
   email: string;
   phone_number: string;
+  username: string;
 }
 
 /**
