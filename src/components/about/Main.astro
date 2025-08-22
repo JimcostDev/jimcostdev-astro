@@ -61,6 +61,20 @@ const ariaLabel = "Abrir CV";
 
 <section class="pt-9 md:pt-18 px-4 mt-6 relative max-w-screen-lg mx-auto">
   <div class="flex flex-col items-center">
+    <!-- BOTÓN CV: solo si existe la entrada 'cv' -->
+    {cvHref ? (
+      <a
+        href={cvHref}
+        target={openInNewTab ? "_blank" : undefined}
+        rel={rel}
+        aria-label={ariaLabel}
+        class="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-300 text-sm font-medium text-sky-600 transition hover:bg-green-300/10 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-sky-300"
+      >
+        <DociIcon class="w-5 h-5" />
+        <span>Ver / Descargar CV</span>
+      </a>
+    ) : null}
+
     <!-- Profile Image -->
     <div class="mb-8 relative group">
       <div
@@ -72,20 +86,6 @@ const ariaLabel = "Abrir CV";
         class="w-64 h-64 md:w-72 md:h-72 object-cover rounded-full shadow-xl ring-2 ring-sky-50 transition-transform duration-300 hover:scale-105"
       />
     </div>
-
-    <!-- BOTÓN CV: solo si existe la entrada 'cv' -->
-    {cvHref ? (
-      <a
-        href={cvHref}
-        target={openInNewTab ? "_blank" : undefined}
-        rel={rel}
-        aria-label={ariaLabel}
-        class="mb-4 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-300 text-sm font-medium text-sky-600 transition hover:bg-green-300/10 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-sky-300"
-      >
-        <DociIcon class="w-5 h-5" />
-        <span>Ver / Descargar CV</span>
-      </a>
-    ) : null}
 
     <!-- Nombre dinámico -->
     <h1 class="text-2xl md:text-4xl font-bold text-center px-4">
