@@ -37,7 +37,8 @@ const cvEntry = networks.find(n => n?.title?.toLowerCase() === "cv" && n.url);
 // Normalizar URL (añade https:// si falta)
 function normalizeUrl(u?: string) {
   if (!u) return "";
-  if (u.startsWith("http://") || u.startsWith("https://") || u.startsWith("/")) return u;
+  // Si ya es absoluta o ruta relativa válida, déjala. Aceptamos también datos: URIs
+  if (/^(https?:\/\/|\/|data:)/i.test(u)) return u;
   return `https://${u}`;
 }
 
@@ -47,13 +48,19 @@ const cvHref = cvEntry?.url ? normalizeUrl(cvEntry.url) : null;
 function getHost(u?: string) {
   try {
     if (!u) return "";
-    return new URL(normalizeUrl(u)).host; // p.ej. "micv.com" o "cv.jimcostdev.com"
+    return new URL(normalizeUrl(u)).host;
   } catch {
     return "";
   }
 }
 const cvHost = getHost(cvEntry?.url);
 
+// --- AVATAR: normalizamos y dejamos fallback ---
+const avatarUrl = profile.avatar ? normalizeUrl(profile.avatar) : "/dev.webp";
+// Si el API puede devolver rutas relativas ("/uploads/me.jpg") esto las mantendrá.
+// Si devuelve "jimcostdev.com/me.webp" se convertirá en "https://jimcostdev.com/me.webp"
+
+// Opciones de link / accesibilidad
 const openInNewTab = true;
 const rel = "noopener noreferrer";
 const ariaLabel = "Abrir CV";
@@ -75,14 +82,18 @@ const ariaLabel = "Abrir CV";
       </a>
     ) : null}
 
-    <!-- Profile Image -->
+    <!-- Profile Image (ahora dinámica desde la API) -->
     <div class="mb-8 relative group">
       <div
         class="absolute -inset-1 bg-gradient-to-r from-sky-300 to-blue-400 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"
       />
       <img
-        src="/dev.webp"
-        alt={fullName}
+        src={avatarUrl}
+        alt={`Foto de perfil de ${fullName}`}
+        width="288"
+        height="288"
+        loading="lazy"
+        decoding="async"
         class="w-64 h-64 md:w-72 md:h-72 object-cover rounded-full shadow-xl ring-2 ring-sky-50 transition-transform duration-300 hover:scale-105"
       />
     </div>
@@ -119,3 +130,6 @@ a[href*="${cvHost}"] { display: none !important; }
     </div>
   </div>
 </section>
+<script type="module">
+  window.dispatchEvent(new CustomEvent('island-ready', { detail: { name: 'MainAbout' } }));
+</script>

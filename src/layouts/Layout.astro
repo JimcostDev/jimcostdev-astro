@@ -8,6 +8,7 @@ const { title } = Astro.props;
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { ClientRouter } from 'astro:transitions';
+import LoadingModal from '@components/LoadingModal.astro';
 
 // Metadatos base
 const pageTitle = `${title} | JimcostDev - Software Engineer`;
@@ -76,6 +77,9 @@ const ogImage = "https://firebasestorage.googleapis.com/v0/b/jimcostdev-firebase
   </head>
   
   <body class="absolute inset-0 -z-10 h-full w-full bg-sky-50 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
+    <!-- Hydrate in client so the script runs -->
+    <LoadingModal client:load islandsCount={6} healthUrl="https://jimcostdev.koyeb.app/healthcheck" timeoutMs={12000} />
+
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed top-4 left-4 bg-sky-600 text-white px-4 py-2 rounded-lg">
       Saltar al contenido principal
     </a>

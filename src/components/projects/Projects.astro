@@ -51,3 +51,6 @@ const getProjects: Project[] = (await cargarDatos<Project[]>('projects')) ?? [];
     </article>
   ))}
 </div>
+<script type="module">
+  window.dispatchEvent(new CustomEvent('island-ready', { detail: { name: 'Projects' } }));
+</script>
