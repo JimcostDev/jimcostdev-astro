@@ -14,6 +14,3 @@ const getExperience: Experience[] = (await cargarDatos<Experience[]>('work_exper
     </li>
   ))}
 </ol>
-<script type="module">
-  window.dispatchEvent(new CustomEvent('island-ready', { detail: { name: 'Experience' } }));
-</script>
