@@ -6,6 +6,7 @@ import type { Profile } from "../../types/About";
 import type { SocialNetwork } from "../../types/SocialNetwork";
 import DociIcon from "@components/icons/Doc.astro";
 
+
 // Cargar datos básicos
 const user = (await cargarDatos<User>("users")) ?? {
   id: "",
@@ -75,7 +76,7 @@ const ariaLabel = "Abrir CV";
         target={openInNewTab ? "_blank" : undefined}
         rel={rel}
         aria-label={ariaLabel}
-        class="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-300 text-sm font-medium text-sky-600 transition hover:bg-green-300/10 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-sky-300"
+        class="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-300 text-sm font-medium text-sky-700 transition hover:bg-blue-400/10 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-sky-300"
       >
         <DociIcon class="w-5 h-5" />
         <span>Ver / Descargar CV</span>
@@ -85,7 +86,7 @@ const ariaLabel = "Abrir CV";
     <!-- Profile Image (ahora dinámica desde la API) -->
     <div class="mb-8 relative group">
       <div
-        class="absolute -inset-1 bg-gradient-to-r from-sky-300 to-blue-400 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"
+        class="absolute -inset-1 bg-gradient-to-r from-sky-500 to-blue-700 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"
       />
       <img
         src={avatarUrl}
@@ -101,18 +102,18 @@ const ariaLabel = "Abrir CV";
     <!-- Nombre dinámico -->
     <h1 class="text-2xl md:text-4xl font-bold text-center px-4">
       Hola, soy&nbsp;
-      <span class="bg-gradient-to-r from-sky-400 to-sky-600 bg-clip-text text-transparent">
+      <span class="bg-gradient-to-r from-sky-600 to-sky-800 bg-clip-text text-transparent">
         {fullName}
       </span>
     </h1>
 
     <div class="flex flex-col items-center mt-4">
       <div class="flex items-center gap-2 mb-2">
-        <span class="text-sky-600">●</span>
+        <span class="text-sky-700">●</span>
         <h3 class="text-xl md:text-2xl font-medium text-gray-700">
           {role}
         </h3>
-        <span class="text-sky-400">●</span>
+        <span class="text-sky-500">●</span>
       </div>
 
       <!-- Social networks SIN tocar 'web' -->
@@ -130,3 +131,4 @@ a[href*="${cvHost}"] { display: none !important; }
     </div>
   </div>
 </section>
+

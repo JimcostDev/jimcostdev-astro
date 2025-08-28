@@ -8,6 +8,7 @@ import About from '@components/about/AboutData.astro'
 import SectionContainer from '@components/SectionContainer.astro'
 import Education from '@components/education/Education.astro'
 import Title from "@components/TitleSection.astro"
+import ProfessionalGuidance from "@components/about/ProfessionalGuidance.astro";
 ---
 <Layout title="Ronaldo Jiménez">
 	<SectionContainer id="principal">
@@ -38,6 +39,9 @@ import Title from "@components/TitleSection.astro"
 		<Title>Skills</Title>
 		<Skills server:defer/>
 	</SectionContainer>
+
+	<SectionContainer id="professional">
+		<Title>¿Necesitas orientación profesional?</Title>
+		<ProfessionalGuidance />
+	</SectionContainer>
 </Layout>
-
-
