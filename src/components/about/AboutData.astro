@@ -12,12 +12,10 @@ const contactoRaw = await cargarDatos<Contact[]>('contact');
 const contactData: Contact[] = contactoRaw ?? [];
 
 // 3) Total años de experiencia (number)
-//    PASO el endpoint "work_experience" y el sufijo "total_years"
 const totalYears = (await cargarDatos<number>(
   'work_experience',
   'total_years'
 )) ?? 0;
-
 
 // 4) Junto todo para pintar el componente
 const aboutItems: AboutProfile[] = profileData.map((profile) => {
@@ -30,11 +28,13 @@ const aboutItems: AboutProfile[] = profileData.map((profile) => {
   };
 });
 ---
-{aboutItems.map(item => (
+{aboutItems.map((item, idx) => (
   <CardAbout
+    key={`about-${item.username ?? idx}`}
     description={item.description}
     totalYears={item.totalYears}
     nationality={item.nationality}
     iLiveIn={item.iLiveIn}
+    skills={item.skills ?? []}  
   />
 ))}

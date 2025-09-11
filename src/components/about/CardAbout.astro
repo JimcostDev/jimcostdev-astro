@@ -1,84 +1,48 @@
 ---
+import SkillsPills from '@components/about/SkillsPills.astro';
+
 const {
   description: _description,
   totalYears: _totalYears,
   nationality: _nationality,
-  iLiveIn: _iLiveIn
+  iLiveIn: _iLiveIn,
+  skills: _skills
 } = Astro.props as {
   description?: string;
   totalYears?: number;
   nationality?: string;
   iLiveIn?: string;
+  skills?: string[];
 };
 
-// Normalizar props (evitar `undefined`)
 const description: string = _description ?? '';
 const totalYears: number = _totalYears ?? 0;
 const nationality: string = _nationality ?? '';
 const iLiveIn: string = _iLiveIn ?? '';
+const skills: string[] = Array.isArray(_skills) ? _skills : [];
 
-/* ------------------ Helpers (typed) ------------------ */
+/* ------------------ Helpers para país/emoji (mantén si ya los tienes) ------------------ */
 function extractCountry(input?: string): string {
   if (!input) return '';
   let s = String(input).trim();
-  // si viene "Ciudad, País" devolvemos "País"
-  if (s.includes(',')) {
-    s = s.split(',').pop() ?? s;
-  }
-  // quitar paréntesis u otras notas: "Spain (es)" -> "Spain"
+  if (s.includes(',')) s = s.split(',').pop() ?? s;
   s = s.replace(/\(.+?\)/g, '').trim();
   return s;
 }
-
 function removeDiacritics(s: string): string {
-  try {
-    return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  } catch {
-    return s;
-  }
+  try { return s.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); } catch { return s; }
 }
-
-/* Raw map con variantes legibles (puede contener tildes) */
 const rawNameToIso: Record<string, string> = {
-  'Colombia': 'CO',
-  'España': 'ES',
-  'Spain': 'ES',
-  'Mexico': 'MX',
-  'México': 'MX',
-  'United States': 'US',
-  'USA': 'US',
-  'United States of America': 'US',
-  'United Kingdom': 'GB',
-  'UK': 'GB',
-  'England': 'GB',
-  'Germany': 'DE',
-  'Deutschland': 'DE',
-  'France': 'FR',
-  'Italy': 'IT',
-  'Portugal': 'PT',
-  'Brazil': 'BR',
-  'Brasil': 'BR',
-  'Argentina': 'AR',
-  'Chile': 'CL',
-  'Peru': 'PE',
-  'Perú': 'PE',
-  'Netherlands': 'NL',
-  'Belgium': 'BE',
-  'Ireland': 'IE',
-  'Australia': 'AU',
-  'Canada': 'CA',
-  'New Zealand': 'NZ'
-  // añade aquí más entradas según necesites
+  'Colombia':'CO','España':'ES','Spain':'ES','Mexico':'MX','México':'MX',
+  'United States':'US','USA':'US','United Kingdom':'GB','UK':'GB','England':'GB',
+  'Germany':'DE','France':'FR','Italy':'IT','Portugal':'PT','Brazil':'BR','Brasil':'BR',
+  'Argentina':'AR','Chile':'CL','Peru':'PE','Perú':'PE','Netherlands':'NL','Belgium':'BE',
+  'Ireland':'IE','Australia':'AU','Canada':'CA','New Zealand':'NZ'
 };
-
-/* Normalizamos el mapa a claves sin diacríticos y en minúscula */
-const nameToIso: Record<string, string> = {};
-Object.entries(rawNameToIso).forEach(([name, iso]) => {
-  const key = removeDiacritics(name).toLowerCase();
-  nameToIso[key] = iso;
+const nameToIso: Record<string,string> = {};
+Object.entries(rawNameToIso).forEach(([name,iso]) => {
+  nameToIso[removeDiacritics(name).toLowerCase()] = iso;
 });
-
-/* Convierte ISO2 en emoji de bandera */
 function isoToFlagEmoji(iso?: string): string {
   if (!iso || iso.length !== 2) return '🌍';
   const OFFSET = 0x1F1E6;
@@ -90,35 +54,26 @@ function isoToFlagEmoji(iso?: string): string {
   if (chars.length !== 2) return '🌍';
   return String.fromCodePoint(chars[0], chars[1]);
 }
-
-/* Busca el emoji a partir de un texto libre (ej: "Cali, Colombia" -> 🇨🇴) */
 function countryEmojiFromText(text?: string): string {
   const countryRaw = extractCountry(text);
   if (!countryRaw) return '🌍';
   const key = removeDiacritics(countryRaw).toLowerCase();
   let iso = nameToIso[key];
-
-  // fallback: intentar primera/última palabra si no hay match exacto
   if (!iso && key.includes(' ')) {
     const parts = key.split(/\s+/);
     iso = nameToIso[parts[parts.length - 1]] ?? nameToIso[parts[0]];
   }
-
   return iso ? isoToFlagEmoji(iso) : '🌍';
 }
-
-/* Computed (siempre strings) */
 const natCountry: string = extractCountry(nationality);
 const natEmoji: string = countryEmojiFromText(nationality);
 const liveCountry: string = extractCountry(iLiveIn);
 const liveEmoji: string = countryEmojiFromText(iLiveIn);
 const displayNat: string = natCountry || nationality || 'N/A';
 const displayLive: string = liveCountry || iLiveIn || 'N/A';
-/* ----------------------------------------------------- */
 ---
-
-<article class="w-full max-w-5xl mx-auto">
-  <div class="bg-sky-50 shadow-md rounded-2xl p-6 md:p-8 grid gap-6 md:grid-cols-3 items-center">
+<article class="w-full max-w-5xl mx-auto mb-12">
+  <div class="bg-sky-50 shadow-md rounded-2xl p-6 md:p-8 grid gap-6 md:grid-cols-3 items-start">
     <!-- LEFT: years badge -->
     <div class="md:col-span-1 flex items-center justify-center">
       <div class="inline-flex items-center gap-3 bg-white/60 rounded-full px-4 py-2 shadow-sm">
@@ -134,23 +89,16 @@ const displayLive: string = liveCountry || iLiveIn || 'N/A';
     <div class="md:col-span-2">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div class="flex items-center gap-4">
-          <!-- Nacionalidad -->
           <div class="inline-flex items-center gap-2 px-2 py-1 rounded">
             <span class="text-xl" aria-hidden>{natEmoji}</span>
-            <span class="text-sm font-medium text-sky-900" title={displayNat}>
-              {displayNat}
-            </span>
+            <span class="text-sm font-medium text-sky-900" title={displayNat}>{displayNat}</span>
           </div>
 
-          <!-- flecha (solo en md+) -->
           <div class="hidden md:block text-2xl text-gray-300">→</div>
 
-          <!-- Vivo en -->
           <div class="inline-flex items-center gap-2 px-2 py-1 rounded">
             <span class="text-xl" aria-hidden>{liveEmoji}</span>
-            <span class="text-sm font-medium text-sky-900" title={displayLive}>
-              {displayLive}
-            </span>
+            <span class="text-sm font-medium text-sky-900" title={displayLive}>{displayLive}</span>
           </div>
         </div>
 
@@ -159,14 +107,16 @@ const displayLive: string = liveCountry || iLiveIn || 'N/A';
         </div>
       </div>
 
-      <!-- Separador -->
       <div class="w-full h-px bg-gradient-to-r from-transparent via-sky-400 to-transparent my-4"></div>
 
-      <!-- Descripción -->
       <p class="text-gray-600 leading-relaxed">
         {description}
       </p>
+
+      <!-- SKILLS: pills estilo prototipo (color sky) -->
+      <div class="mt-4">
+        <SkillsPills skills={skills ?? []} />
+      </div>
     </div>
   </div>
 </article>
-

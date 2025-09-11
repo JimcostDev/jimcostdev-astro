@@ -1,0 +1,68 @@
+---
+// Props: skills?: string[]
+const { skills: _skills } = Astro.props as { skills?: string[] };
+const skills: string[] = Array.isArray(_skills) ? _skills : [];
+
+// Función para determinar el color de cada pill basado en ÁREAS GENERALES
+function getSkillColor(skill: string): string {
+  const skillLower = skill.toLowerCase();
+  
+  // 🟣 TÉCNICAS: Bases de datos, Desarrollo, Tecnologías
+  if (skillLower.includes('datos') || skillLower.includes('data') || skillLower.includes('base') || 
+      skillLower.includes('desarrollo') || skillLower.includes('software') || skillLower.includes('development') || 
+      skillLower.includes('programación') || skillLower.includes('backend') || skillLower.includes('frontend') ||
+      skillLower.includes('cloud') || skillLower.includes('nube') || skillLower.includes('computing') ||
+      skillLower.includes('devops') || skillLower.includes('arquitectura') || skillLower.includes('nosql') ||
+      skillLower.includes('mongodb') || skillLower.includes('python') || skillLower.includes('api')) {
+    return 'bg-sky-100 text-sky-800 border-sky-200';
+  }
+  
+  // 🟠 SOFT SKILLS: Liderazgo, Gestión, Comunicación
+  if (skillLower.includes('liderazgo') || skillLower.includes('gestión') || skillLower.includes('management') || 
+      skillLower.includes('proyectos') || skillLower.includes('equipo') || skillLower.includes('comunicación') ||
+      skillLower.includes('scrum') || skillLower.includes('agile') || skillLower.includes('mentoring')) {
+    return 'bg-orange-100 text-orange-800 border-orange-200';
+  }
+  
+  // 🟢 EDUCACIÓN/DOCENCIA: Teaching, Formación
+  if (skillLower.includes('docencia') || skillLower.includes('teaching') || skillLower.includes('educación') || 
+      skillLower.includes('formación') || skillLower.includes('capacitación') || skillLower.includes('mentor') ||
+      skillLower.includes('tutor') || skillLower.includes('enseñanza')) {
+    return 'bg-green-100 text-green-800 border-green-200';
+  }
+  
+  // 🟣 INNOVACIÓN/INVESTIGACIÓN: Research, Innovation
+  if (skillLower.includes('innovación') || skillLower.includes('innovation') || skillLower.includes('investigación') || 
+      skillLower.includes('research') || skillLower.includes('i+d') || skillLower.includes('creatividad')) {
+    return 'bg-purple-100 text-purple-800 border-purple-200';
+  }
+  
+  // 🔘 CONSULTORÍA/NEGOCIO: Business, Consulting
+  if (skillLower.includes('consultoría') || skillLower.includes('consulting') || skillLower.includes('asesoría') ||
+      skillLower.includes('negocio') || skillLower.includes('business') || skillLower.includes('estrategia')) {
+    return 'bg-rose-100 text-rose-800 border-rose-200';
+  }
+  
+
+  // Default sky theme (mantiene coherencia con tu card)
+  return 'bg-sky-100 text-sky-800 border-sky-200';
+}
+---
+
+{skills.length > 0 && (
+  <div class="space-y-2">
+    <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+      Áreas de Especialización
+    </h4>
+    <div class="flex flex-wrap gap-2">
+      {skills.map((skill) => (
+        <span 
+          class={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border transition-all duration-200 hover:scale-105 hover:shadow-sm ${getSkillColor(skill)}`}
+          title={skill}
+        >
+          {skill}
+        </span>
+      ))}
+    </div>
+  </div>
+)}
