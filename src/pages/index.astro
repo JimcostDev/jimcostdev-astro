@@ -14,6 +14,10 @@ import ProfessionalGuidance from "@components/about/ProfessionalGuidance.astro";
 	<SectionContainer id="principal">
 		<MainAbout server:defer/>
 	</SectionContainer>
+
+	<SectionContainer id="sobre-mi">
+		<About server:defer/>
+	</SectionContainer>
 	
 	<SectionContainer id="experiencia">
 		<Title>Experiencia</Title>
@@ -28,11 +32,6 @@ import ProfessionalGuidance from "@components/about/ProfessionalGuidance.astro";
 	<SectionContainer id="proyectos">
 		<Title>Proyectos</Title>
 		<Projects server:defer/>
-	</SectionContainer>
-
-	<SectionContainer id="sobre-mi">
-		<Title>Sobre mí</Title>
-		<About server:defer/>
 	</SectionContainer>
 
 	<!-- <SectionContainer id="skills">
