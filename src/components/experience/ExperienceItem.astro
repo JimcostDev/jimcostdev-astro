@@ -7,23 +7,74 @@ interface Props {
   initial_date: string
   end_date: string | null
   duration: string
+  isCurrentJob?: boolean // Nueva propiedad opcional
 }
 
-const { rol, company, location, activities, initial_date, end_date, duration } = Astro.props
+const { 
+  rol, 
+  company, 
+  location, 
+  activities, 
+  initial_date, 
+  end_date, 
+  duration,
+  isCurrentJob = false // Valor por defecto
+} = Astro.props
+
 const endDateFormatted = end_date ?? 'actualidad';
 ---
 
-<div class="relative mx-12 pb-12 grid max-w-5xl before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20  before:content-[''] md:grid-cols-5 md:gap-10 md:space-x-4]">
-  <div class="relative pb-12 md:col-span-2">
-    <div class="sticky top-0">
-      <span class="text-sky-600 -left-[42px] absolute rounded-full text-5xl">&bull;</span>
-      <h3 class="text-xl font-semibold text-sky-600">{rol}</h3>
-      <h4 class="font-semibold text-xl text-gray-600">{company} [{location}]</h4>
-      <time class="p-0 m-0 text-sm text-gray-600/80">{initial_date} - {endDateFormatted}</time>
-      <time class="p-0 m-0 text-sm text-sky-600/80"> · {duration}</time>
+<div class="relative mx-4 md:mx-12 pb-6 md:pb-8">
+  <!-- Timeline line -->
+  <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-sky-200 via-sky-300 to-transparent"></div>
+  
+  <!-- Experience card -->
+  <div class="relative flex items-start gap-6">
+    <!-- Timeline dot -->
+    <div class="relative z-10 flex-shrink-0">
+      <div class={`w-4 h-4 rounded-full border-2 ${isCurrentJob 
+        ? 'bg-sky-500 border-sky-500 shadow-lg shadow-sky-500/30 animate-pulse' 
+        : 'bg-white border-sky-400'
+      }`}></div>
     </div>
-  </div>
-  <div class="relative flex flex-col gap-2 pb-4 text-gray-600 md:col-span-3">
-    {activities}
+    
+    <!-- Content card -->
+    <div class="flex-1 bg-white/50 backdrop-blur-sm rounded-xl p-6 border border-sky-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+        <div class="flex-1">
+          <h3 class="text-lg md:text-xl font-bold text-sky-700 mb-2">{rol}</h3>
+          <div class="flex items-center gap-2 mb-2">
+            <h4 class="font-semibold text-gray-800">{company}</h4>
+            {isCurrentJob && (
+              <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">
+                Actual
+              </span>
+            )}
+          </div>
+          <p class="text-sm text-gray-600 flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+            </svg>
+            {location}
+          </p>
+        </div>
+        
+        <!-- Dates -->
+        <div class="text-right text-sm">
+          <time class="block font-medium text-gray-700 mb-1">
+            {initial_date} - {endDateFormatted}
+          </time>
+          <time class={`text-xs ${isCurrentJob ? 'text-sky-600 font-medium' : 'text-gray-500'}`}>
+            {duration}
+          </time>
+        </div>
+      </div>
+      
+      <!-- Activities -->
+      <div class="prose prose-sm prose-gray max-w-none">
+        <div class="text-gray-700 leading-relaxed text-sm" set:html={activities}></div>
+      </div>
+    </div>
   </div>
 </div>

@@ -2,13 +2,34 @@
 import { cargarDatos } from '@api/loadData';
 import type { Experience } from '../../types/Experience';
 import ExperienceItem from './ExperienceItem.astro';
+import { formatDateRange } from '@utils/dateUtils';
 
 // Carga de experiencia laboral
 const getExperience: Experience[] = (await cargarDatos<Experience[]>('work_experience')) ?? [];
+
+// Transformar los datos con fechas formateadas
+const formattedExperience = getExperience.map(exp => {
+  const dateInfo = formatDateRange(exp.initial_date, exp.end_date, 'full');
+  const isCurrentJob = exp.end_date === null; // Detectar trabajo actual
+  
+  return {
+    ...exp,
+    initial_date: dateInfo.startFormatted,
+    end_date: dateInfo.endFormatted,
+    duration: dateInfo.duration,
+    isCurrentJob, // Añadir la propiedad
+    // Mantener datos originales por si los necesitas
+    _original: {
+      initial_date: exp.initial_date,
+      end_date: exp.end_date,
+      duration: exp.duration
+    }
+  };
+});
 ---
 
 <ol class="relative mt-8">
-  {getExperience.map(exp => (
+  {formattedExperience.map(exp => (
     <li>
       <ExperienceItem {...exp} />
     </li>
