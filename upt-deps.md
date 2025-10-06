@@ -87,3 +87,11 @@ Asegúrate de que no haya errores y revisa si alguna dependencia requiere cambio
 git add .
 git commit -m "chore: backup antes de actualizar dependencias"
 ```
+
+---
+
+### 🚀 Actulizar Astro
+
+```bash
+npx @astrojs/upgrade
+```
