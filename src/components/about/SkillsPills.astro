@@ -17,10 +17,12 @@ function getSkillColor(skill: string): string {
     return 'bg-sky-100 text-sky-800 border-sky-200';
   }
   
-  // 🟠 SOFT SKILLS: Liderazgo, Gestión, Comunicación
+  // 🟠 SOFT SKILLS: Liderazgo, Gestión, Comunicación, Adaptabilidad, Atención al cliente, Orientación al detalle
   if (skillLower.includes('liderazgo') || skillLower.includes('gestión') || skillLower.includes('management') || 
       skillLower.includes('proyectos') || skillLower.includes('equipo') || skillLower.includes('comunicación') ||
-      skillLower.includes('scrum') || skillLower.includes('agile') || skillLower.includes('mentoring')) {
+      skillLower.includes('scrum') || skillLower.includes('agile') || skillLower.includes('mentoring') ||
+      skillLower.includes('adaptabilidad') || skillLower.includes('orientación al detalle') ||
+      skillLower.includes('detalle') || skillLower.includes('cliente') || skillLower.includes('atención al cliente')) {
     return 'bg-orange-100 text-orange-800 border-orange-200';
   }
   
@@ -37,12 +39,11 @@ function getSkillColor(skill: string): string {
     return 'bg-purple-100 text-purple-800 border-purple-200';
   }
   
-  // 🔘 CONSULTORÍA/NEGOCIO: Business, Consulting
+  // 🔴 CONSULTORÍA/NEGOCIO: Business, Consulting
   if (skillLower.includes('consultoría') || skillLower.includes('consulting') || skillLower.includes('asesoría') ||
       skillLower.includes('negocio') || skillLower.includes('business') || skillLower.includes('estrategia')) {
     return 'bg-rose-100 text-rose-800 border-rose-200';
   }
-  
 
   // Default sky theme (mantiene coherencia con tu card)
   return 'bg-sky-100 text-sky-800 border-sky-200';
