@@ -4,8 +4,8 @@ export async function cargarDatos<T>(
 ): Promise<T | null> {
   const user = 'jimcostdev';
 
-  // URL de producción (Koyeb)
-  const urlAPI = `https://jimcostdev.koyeb.app/${endpoint}/p/${user}${
+  // URL de producción (FastAPI Cloud)
+  const urlAPI = `https://jimcostdev-api.fastapicloud.dev/${endpoint}/p/${user}${
     suffix ? `/${suffix}` : ''
   }`;
 
