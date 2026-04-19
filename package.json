@@ -10,17 +10,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.5",
-    "@astrojs/vercel": "^10.0.2",
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/vercel": "^10.0.4",
     "@fontsource-variable/onest": "^5.0.4",
     "@tailwindcss/vite": "^4.1.1",
-    "astro": "^5.16.11",
+    "astro": "^6.1.8",
     "tailwindcss": "^4.1.1",
     "typescript": "^5.5.3"
   },
   "overrides": {
     "devalue": "5.6.4",
     "lodash": "4.17.23",
-    "path-to-regexp": "^6.2.3"
+    "path-to-regexp": "^6.2.3",
+    "yaml": "^2.8.3"
   }
 }
