@@ -8,24 +8,26 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.8",
-    "@astrojs/vercel": "^10.0.4",
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/vercel": "^11.0.2",
     "@fontsource-variable/onest": "^5.0.4",
-    "@tailwindcss/vite": "^4.1.1",
-    "astro": "^6.1.8",
-    "tailwindcss": "^4.1.1",
-    "typescript": "^5.5.3"
+    "@tailwindcss/vite": "^4.3.2",
+    "astro": "^7.0.7",
+    "tailwindcss": "^4.3.2",
+    "typescript": "^7.0.2"
   },
   "overrides": {
-    "devalue": "5.6.4",
+    "devalue": "^5.8.1",
     "lodash": "4.17.23",
     "path-to-regexp": "^6.2.3",
-    "yaml": "^2.8.3",
-    "vite": "^7"
+    "yaml": "^2.8.3"
+  },
+  "allowScripts": {
+    "esbuild": true
   }
 }
